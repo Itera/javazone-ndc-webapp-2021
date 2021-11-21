@@ -6,7 +6,7 @@ interface Props {
   start: number | null;
 }
 
-export function Timer(props: Props): JSX.Element | null {
+export function TimeDisplay(props: Props): JSX.Element | null {
   const { start } = props;
   const [, setTick] = useState(0);
 

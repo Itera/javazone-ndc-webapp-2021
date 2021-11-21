@@ -1,4 +1,4 @@
-import { Timer } from '../timer/TimeDisplay';
+import { TimeDisplay } from '../timer/TimeDisplay';
 import { useLeaderboard } from '../../hooks/useLeaderboard';
 
 export function Ongoing() {
@@ -11,7 +11,7 @@ export function Ongoing() {
           <tr key={entry.start}>
             <td>{entry.name}</td>
             <td>
-              <Timer start={entry.start} />
+              <TimeDisplay start={entry.start} />
             </td>
           </tr>
         ))}
