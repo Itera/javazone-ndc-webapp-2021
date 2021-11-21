@@ -20,7 +20,8 @@ export function useTimer() {
 
     await update(db, {
       [generatedKey]: {
-        user: user.uid,
+        name: user.displayName,
+        uid: user.uid,
         start: now,
       },
     });

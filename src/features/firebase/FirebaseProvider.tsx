@@ -37,7 +37,7 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
     const date = new Date();
     const today = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 
-    if (data[today] === undefined) {
+    if (data === null || data[today] === undefined) {
       await set(ref(db, `leaderboard/${today}`), {
         createdAt: Date.now(),
       });

@@ -16,7 +16,7 @@ export function User() {
     if (user === null) {
       navigate(Path.REGISTRATION);
     }
-  }, [user]);
+  }, [user, navigate]);
 
   function startTimer() {
     if (user === null) {
