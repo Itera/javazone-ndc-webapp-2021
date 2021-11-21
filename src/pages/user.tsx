@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Path } from '../routes';
-import { Timer } from '../features/timer/Timer';
+import { Timer } from '../features/timer/TimeDisplay';
 import { useNavigate } from 'react-router';
 import { useTimer } from '../hooks/useTimer';
 import { useUser } from '../hooks/useUser';
