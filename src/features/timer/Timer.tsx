@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { toTimeString } from '../../utils/toTimeString';
+
 interface Props {
   start: number | null;
 }
@@ -26,12 +28,5 @@ export function Timer(props: Props): JSX.Element | null {
     return null;
   }
 
-  const elapsed = Date.now() - start;
-  const time = new Date(elapsed);
-
-  return (
-    <h1>
-      {time.getMinutes()}:{time.getSeconds()}:{time.getMilliseconds()}
-    </h1>
-  );
+  return <h1>{toTimeString(start, Date.now())}</h1>;
 }

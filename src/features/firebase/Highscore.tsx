@@ -1,10 +1,5 @@
+import { toTimeString } from '../../utils/toTimeString';
 import { useLeaderboard } from '../../hooks/useLeaderboard';
-
-function getElapsedTimeString(start: number, finish: number): string {
-  const elapsed = finish - start;
-  const time = new Date(elapsed);
-  return `${time.getMinutes()}:${time.getSeconds()}:${time.getMilliseconds()}`;
-}
 
 export function Highscore() {
   const [leaderboard] = useLeaderboard();
@@ -16,7 +11,7 @@ export function Highscore() {
           <tr key={entry.start}>
             <td>{index}.</td>
             <td>{entry.name}</td>
-            <td>{getElapsedTimeString(entry.start, entry.finish)}</td>
+            <td>{toTimeString(entry.start, entry.finish)}</td>
           </tr>
         ))}
       </tbody>
