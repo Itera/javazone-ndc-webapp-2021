@@ -24,12 +24,18 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
     const data = await snapshot.val();
 
     const date = new Date();
-    const today = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    const today = `${date.getFullYear()}-${date.getMonth()}-${
+      date.getDate() - 1
+    }`;
 
     if (data === null || data[today] === undefined) {
-      await set(ref(db, `leaderboard/${today}`), {
-        createdAt: Date.now(),
-      });
+      try {
+        await set(ref(db, `leaderboard/${today}`), {
+          createdAt: Date.now(),
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 

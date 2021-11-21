@@ -3,6 +3,8 @@ import {
   UserCredential,
   createUserWithEmailAndPassword,
   getAuth,
+  signOut as logout,
+  signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
 
@@ -47,7 +49,18 @@ export function useAuth() {
     return credentials.user;
   }
 
+  async function signIn(email: string, password: string): Promise<User> {
+    const credentials = await signInWithEmailAndPassword(auth, email, password);
+    return credentials.user;
+  }
+
+  async function signOut() {
+    await logout(auth);
+  }
+
   return {
     addUser,
+    signIn,
+    signOut,
   };
 }

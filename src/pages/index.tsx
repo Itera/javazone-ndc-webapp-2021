@@ -7,6 +7,7 @@ export function Home() {
       <h1>Navigation links</h1>
       <Link to={Path.LEADERBOARD}>Leaderboard</Link>
       <Link to={Path.REGISTRATION}>Registration</Link>
+      <Link to={Path.LOGIN}>Sign In</Link>
     </>
   );
 }
