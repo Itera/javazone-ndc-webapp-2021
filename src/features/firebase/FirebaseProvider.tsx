@@ -24,9 +24,7 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
     const data = await snapshot.val();
 
     const date = new Date();
-    const today = `${date.getFullYear()}-${date.getMonth()}-${
-      date.getDate() - 1
-    }`;
+    const today = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 
     if (data === null || data[today] === undefined) {
       try {
