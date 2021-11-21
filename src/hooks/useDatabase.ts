@@ -11,5 +11,10 @@ import { useState } from 'react';
 export function useDatabase(): [DatabaseReference, Database] {
   const { app } = useFirebase();
   const [db] = useState(getDatabase(app));
-  return [ref(db, '/leaderboard'), db];
+  const [today] = useState(() => {
+    const date = new Date();
+    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  });
+
+  return [ref(db, `/leaderboard/${today}`), db];
 }
