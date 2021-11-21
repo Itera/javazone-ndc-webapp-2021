@@ -5,7 +5,7 @@ import { Timer } from '../features/timer/Timer';
 import { useNavigate } from 'react-router';
 import { useUser } from '../hooks/useUser';
 
-export function User() {
+export function Profile() {
   const navigate = useNavigate();
   const user = useUser();
 

@@ -6,7 +6,7 @@ import { useAsync } from '../../hooks/useAsync';
 import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router';
 
-export function Register() {
+export function SignUp() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');

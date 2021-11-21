@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router';
 
 import { Home } from '../pages';
-import { Leaderboard } from '../pages/leaderboard';
-import { Login } from '../pages/auth/login';
-import { Register } from '../pages/auth/register';
-import { User } from '../pages/user';
+import { Overview } from '../pages/Overview';
+import { Profile } from '../pages/Profile';
+import { SignIn } from '../pages/auth/SignIn';
+import { SignUp } from '../pages/auth/SignUp';
 
 export enum Path {
   HOME = '/',
@@ -19,11 +19,11 @@ export function Router() {
   return (
     <Routes>
       <Route path={Path.HOME} element={<Home />} />
-      <Route path={Path.USER} element={<User />} />
-      <Route path={Path.LEADERBOARD} element={<Leaderboard />} />
+      <Route path={Path.USER} element={<Profile />} />
+      <Route path={Path.LEADERBOARD} element={<Overview />} />
 
-      <Route path={Path.REGISTRATION} element={<Register />} />
-      <Route path={Path.LOGIN} element={<Login />} />
+      <Route path={Path.REGISTRATION} element={<SignUp />} />
+      <Route path={Path.LOGIN} element={<SignIn />} />
     </Routes>
   );
 }
