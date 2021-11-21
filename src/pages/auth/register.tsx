@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-
 import { FirebaseError } from '@firebase/util';
 import { Path } from '../../routes';
 import { useAsync } from '../../hooks/useAsync';
 import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 export function Register() {
   const navigate = useNavigate();
@@ -12,18 +11,12 @@ export function Register() {
   const [email, setEmail] = useState('');
 
   const { addUser } = useAuth();
-  const { callback, loading, error, result } = useAsync(addUser);
+  const { callback, loading, error } = useAsync(addUser);
 
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    callback(username, email);
+    callback(username, email).then(() => navigate(Path.USER));
   }
-
-  useEffect(() => {
-    if (result !== null) {
-      navigate(Path.USER);
-    }
-  }, [result, navigate]);
 
   return (
     <>

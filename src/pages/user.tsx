@@ -21,7 +21,7 @@ export function User() {
 
   return (
     <>
-      <h1>Hello there {user?.displayName}</h1>
+      <h1>Hello there {user.displayName}</h1>
       <Timer user={user} />
     </>
   );

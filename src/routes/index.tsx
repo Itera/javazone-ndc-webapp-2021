@@ -15,14 +15,12 @@ export enum Path {
 
 export function Router() {
   return (
-    <main>
-      <Routes>
-        <Route path={Path.HOME} element={<Home />} />
-        <Route path={Path.USER} element={<User />} />
-        <Route path={Path.LEADERBOARD} element={<Leaderboard />} />
+    <Routes>
+      <Route path={Path.HOME} element={<Home />} />
+      <Route path={Path.USER} element={<User />} />
+      <Route path={Path.LEADERBOARD} element={<Leaderboard />} />
 
-        <Route path={Path.REGISTRATION} element={<Register />} />
-      </Routes>
-    </main>
+      <Route path={Path.REGISTRATION} element={<Register />} />
+    </Routes>
   );
 }
