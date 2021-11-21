@@ -34,8 +34,7 @@ export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
       const entries = Object.values(data).filter(
         (entry) => typeof entry !== 'number'
       );
-      // @ts-ignore
-      updateStandings(entries);
+      updateStandings(entries as unknown as Array<Entry>);
     });
   }
 
