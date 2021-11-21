@@ -1,4 +1,4 @@
-import { DatabaseSchema, Entry } from '../domain';
+import { Entry, Leaderboard } from '../domain';
 
 import { onValue } from 'firebase/database';
 import { useDatabase } from './useDatabase';
@@ -30,11 +30,11 @@ export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
 
   function attachObserver() {
     onValue(db, (snapshot) => {
-      const data = snapshot.val() as DatabaseSchema['leaderboard'];
-      const entries = Object.values(data).filter(
-        (entry) => typeof entry !== 'number'
-      );
-      updateStandings(entries as unknown as Array<Entry>);
+      const data = snapshot.val() as Leaderboard;
+      if (data !== null && data.entries !== undefined) {
+        const entries = Object.values(data.entries);
+        updateStandings(entries);
+      }
     });
   }
 

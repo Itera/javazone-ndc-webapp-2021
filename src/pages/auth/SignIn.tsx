@@ -37,12 +37,14 @@ export function SignIn() {
         <input
           type="email"
           placeholder="email"
+          value={email}
           onChange={(event) => setEmail(event.currentTarget.value)}
           required
         />
         <input
           type="password"
           placeholder="password"
+          value={password}
           onChange={(event) => setPassword(event.currentTarget.value)}
           required
         />

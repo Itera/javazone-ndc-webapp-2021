@@ -8,11 +8,11 @@ import { SignUp } from '../pages/auth/SignUp';
 
 export enum Path {
   HOME = '/',
-  USER = '/user',
+  USER = '/profile',
   LEADERBOARD = '/leaderboard',
 
-  REGISTRATION = '/auth/register',
-  LOGIN = '/auth/login',
+  REGISTRATION = '/auth/sign-up',
+  LOGIN = '/auth/sign-in',
 }
 
 export function Router() {

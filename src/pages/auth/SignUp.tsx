@@ -32,12 +32,14 @@ export function SignUp() {
         <input
           type="text"
           placeholder="name"
+          value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
           required
         />
         <input
           type="email"
           placeholder="email"
+          value={email}
           onChange={(event) => setEmail(event.target.value)}
           required
         />

@@ -5,11 +5,19 @@ export interface Entry {
   finish?: number;
 }
 
+export enum DatabasePath {
+  LEADERBOARD = '/leaderboard',
+  ENTRY = '/entries',
+}
+
+export interface Leaderboard {
+  entries?: {
+    [key: string]: Entry;
+  };
+  createdAt: number;
+}
 export interface DatabaseSchema {
   leaderboard: {
-    [key: string]: {
-      [key: string]: Entry | number;
-      createdAt: number;
-    };
+    [key: string]: Leaderboard;
   };
 }

@@ -54,6 +54,10 @@ export function useAuth() {
     return credentials.user;
   }
 
+  async function updateUsername(username: string): Promise<void> {
+    await setUsername(auth, username);
+  }
+
   async function signOut() {
     await logout(auth);
   }
@@ -62,5 +66,6 @@ export function useAuth() {
     addUser,
     signIn,
     signOut,
+    updateUsername,
   };
 }

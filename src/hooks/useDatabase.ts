@@ -5,6 +5,7 @@ import {
   ref,
 } from 'firebase/database';
 
+import { DatabasePath } from '../domain';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
 import { useState } from 'react';
 
@@ -16,5 +17,5 @@ export function useDatabase(): [DatabaseReference, Database] {
     return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
   });
 
-  return [ref(db, `/leaderboard/${today}`), db];
+  return [ref(db, `${DatabasePath.LEADERBOARD}/${today}`), db];
 }

@@ -1,5 +1,6 @@
 import { child, get, push, update } from '@firebase/database';
 
+import { DatabasePath } from '../domain';
 import { User } from '@firebase/auth';
 import { useDatabase } from './useDatabase';
 import { useState } from 'react';
@@ -9,7 +10,8 @@ export function useTimer() {
   const [key, setKey] = useState<string | null>(null);
 
   async function start(user: User) {
-    const generatedKey = push(db).key;
+    const dbRef = child(db, DatabasePath.ENTRY);
+    const generatedKey = push(dbRef).key;
 
     if (generatedKey === null) {
       throw new Error('Failed to generate new key');
@@ -18,7 +20,7 @@ export function useTimer() {
     setKey(() => generatedKey);
     const now = Date.now();
 
-    await update(db, {
+    await update(dbRef, {
       [generatedKey]: {
         name: user.displayName,
         uid: user.uid,
@@ -35,14 +37,13 @@ export function useTimer() {
     }
 
     const now = Date.now();
-    const entry = await get(child(db, key));
+    const dbRef = child(db, `${DatabasePath.ENTRY}/${key}`);
+    const entry = await get(dbRef);
     const data = entry.val();
 
-    await update(db, {
-      [key]: {
-        ...data,
-        finish: now,
-      },
+    await update(dbRef, {
+      ...data,
+      finish: now,
     });
 
     setKey(() => null);
