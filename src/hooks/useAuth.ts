@@ -9,9 +9,11 @@ import {
 import { Auth } from 'firebase/auth';
 import { useDatabase } from './useDatabase';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
+import { Logger } from '../features/logging/logger';
+import { useState } from 'react';
 
-async function createUser(auth: Auth): Promise<UserCredential> {
-  console.trace('[useAuth] Creating a new user');
+async function createUser(auth: Auth, logger: Logger): Promise<UserCredential> {
+  logger.trace('Creating a new user');
   const credentials = await signInAnonymously(auth);
   return credentials;
 }
@@ -20,9 +22,10 @@ async function addUserToCollection(
   db: DatabaseReference,
   user: UserCredential,
   email: string,
-  username: string
+  username: string,
+  logger: Logger
 ): Promise<void> {
-  console.trace('[useAuth] Creating a document entry for user', user.user.uid);
+  logger.trace('Creating a document entry for user', `[uid=${user.user.uid}]`);
   const documentRef = child(db, `/${user.user.uid}`);
   await update(documentRef, {
     email,
@@ -33,19 +36,27 @@ async function addUserToCollection(
 }
 
 export function useAuth() {
+  const [logger] = useState(new Logger('useAuth'));
   const { users } = useDatabase();
   const { auth } = useFirebase();
 
   async function addUser(username: string, email: string): Promise<User> {
-    console.trace('[useAuth] Adding new user');
-    const credentials = await createUser(auth);
-    await addUserToCollection(users, credentials, email, username);
+    logger.trace('Adding new user');
+    const credentials = await createUser(auth, logger);
+    await addUserToCollection(users, credentials, email, username, logger);
+
+    logger.info(
+      'Successfully created new user',
+      `[uid=${credentials.user.uid}]`
+    );
     return credentials.user;
   }
 
   async function signIn(email: string, password: string): Promise<User> {
-    console.trace('[useAsync] Signing in user');
+    logger.trace('Signing in user');
     const credentials = await signInWithEmailAndPassword(auth, email, password);
+
+    logger.info('Signed in user', `[uid=${credentials.user.uid}]`);
     return credentials.user;
   }
 

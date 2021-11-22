@@ -3,39 +3,39 @@ import { onValue } from 'firebase/database';
 import { useDatabase } from './useDatabase';
 import { useMount } from './useMount';
 import { useState } from 'react';
+import { Logger } from '../features/logging/logger';
 
 export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
+  const [logger] = useState(new Logger('useLeaderboard'));
   const { daily } = useDatabase();
   const [leaderboard, setLeaderboard] = useState<Array<Required<Entry>>>([]);
   const [ongoing, setOngoing] = useState<Array<Entry>>([]);
 
   function updateStandings(entries: Array<Entry>) {
-    console.trace('[useLeaderboard] Updating leaderboard');
+    logger.trace('Updating leaderboard');
 
-    setOngoing(() =>
-      entries.filter((entry) => !entry.hasOwnProperty('finish'))
-    );
+    setOngoing(() => {
+      const res = entries.filter((entry) => !entry.hasOwnProperty('finish'));
+      logger.debug('Found', `[ongoing=${res.length}]`, 'ongoing entries');
+      return res;
+    });
 
     const finished = entries.filter((entry) =>
       entry.hasOwnProperty('finish')
     ) as Array<Required<Entry>>;
 
-    setLeaderboard(() =>
-      finished.sort((a, b) => {
-        const aElapsed = a.finish - a.start;
-        const bElapsed = b.finish - b.start;
-        return aElapsed - bElapsed;
-      })
-    );
+    logger.debug('Found', `[finished=${finished.length}]`, 'finished entries');
+    setLeaderboard(() => finished.sort((a, b) => a.elapsed - b.elapsed));
   }
 
   function attachObserver() {
-    console.trace(
-      '[useLeaderboard] Attaching listener to leaderboard document',
+    logger.trace(
+      'Attaching listener to leaderboard document',
       daily.toString()
     );
     onValue(daily, (snapshot) => {
       if (!snapshot.exists()) {
+        logger.warn('Found no data on', `[src=${daily.toString()}]`);
         return;
       }
 
