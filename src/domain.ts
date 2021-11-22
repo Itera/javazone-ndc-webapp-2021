@@ -1,5 +1,4 @@
 export interface Entry {
-  name: string;
   uid: string;
   start: number;
   finish?: number;
@@ -8,6 +7,7 @@ export interface Entry {
 export enum DatabasePath {
   LEADERBOARD = '/leaderboard',
   ENTRY = '/entries',
+  USERS = '/users',
 }
 
 export interface Leaderboard {

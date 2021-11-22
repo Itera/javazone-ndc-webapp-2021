@@ -9,7 +9,7 @@ export function Ongoing() {
       <tbody>
         {ongoing.map((entry) => (
           <tr key={entry.start}>
-            <td>{entry.name}</td>
+            <td>{entry.uid}</td>
             <td>
               <TimeDisplay start={entry.start} />
             </td>

@@ -22,7 +22,6 @@ export function useTimer() {
 
     await update(dbRef, {
       [generatedKey]: {
-        name: user.displayName,
         uid: user.uid,
         start: now,
       },
