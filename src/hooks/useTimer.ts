@@ -9,6 +9,7 @@ export function useTimer() {
   const [key, setKey] = useState<string | null>(null);
 
   async function start(user: User) {
+    console.trace('[useTimer] Starting new timer for user', user.uid);
     const generatedKey = push(daily).key;
 
     if (generatedKey === null) {
@@ -30,6 +31,7 @@ export function useTimer() {
   }
 
   async function stop() {
+    console.trace('[useTimer] Stopping timer on', key);
     if (key === null) {
       throw new Error('No ongoing session found');
     }

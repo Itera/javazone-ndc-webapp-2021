@@ -12,6 +12,7 @@ export function useUser(): User | null {
   const [user, setUser] = useState<User | null>(null);
 
   useMount(() => {
+    console.trace('[useUser] Retrieving user', auth.currentUser?.uid);
     if (auth.currentUser === null) {
       return;
     }

@@ -7,6 +7,7 @@ export function useAsync(f: (...args: any[]) => Promise<unknown>) {
 
   const callback = useCallback(
     (...args: any[]): Promise<unknown> => {
+      console.trace('[useAsync] Async callback invoked');
       setLoading(() => true);
       setError(() => null);
 
