@@ -1,5 +1,4 @@
-import { Entry, Leaderboard } from '../domain';
-
+import { Entry } from '../domain';
 import { onValue } from 'firebase/database';
 import { useDatabase } from './useDatabase';
 import { useMount } from './useMount';
@@ -36,12 +35,7 @@ export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
         return;
       }
 
-      const data = snapshot.val() as Leaderboard['entries'];
-
-      if (data === undefined) {
-        return;
-      }
-
+      const data = snapshot.val() as Record<string, Entry>;
       const entries = Object.values(data);
       updateStandings(entries);
     });

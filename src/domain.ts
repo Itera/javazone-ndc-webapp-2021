@@ -19,16 +19,10 @@ export enum DatabasePath {
 }
 
 export interface Leaderboard {
-  entries?: {
-    [key: string]: Entry;
-  };
+  entries?: Record<string, Entry>;
   createdAt: number;
 }
 export interface DatabaseSchema {
-  users: {
-    [key: string]: User;
-  };
-  leaderboard: {
-    [key: string]: Leaderboard;
-  };
+  users: Record<string, User>;
+  leaderboard: Record<string, Leaderboard>;
 }
