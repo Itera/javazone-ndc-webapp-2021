@@ -11,6 +11,8 @@ export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
   const [ongoing, setOngoing] = useState<Array<Entry>>([]);
 
   function updateStandings(entries: Array<Entry>) {
+    console.trace('Updating leaderboard');
+
     setOngoing(() =>
       entries.filter((entry) => !entry.hasOwnProperty('finish'))
     );
@@ -30,11 +32,18 @@ export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
 
   function attachObserver() {
     onValue(daily, (snapshot) => {
-      const data = snapshot.val() as Leaderboard;
-      if (data !== null && data.entries !== undefined) {
-        const entries = Object.values(data.entries);
-        updateStandings(entries);
+      if (!snapshot.exists()) {
+        return;
       }
+
+      const data = snapshot.val() as Leaderboard['entries'];
+
+      if (data === undefined) {
+        return;
+      }
+
+      const entries = Object.values(data);
+      updateStandings(entries);
     });
   }
 
