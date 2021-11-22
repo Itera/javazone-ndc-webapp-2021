@@ -19,15 +19,15 @@ export function SignUp() {
 
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    logEvent(analytics, 'sign_up');
     callback(username, email);
   }
 
   useEffect(() => {
     if (result !== null) {
-      logEvent(analytics, 'sign_up');
       navigate(Path.USER, { replace: true });
     }
-  }, [navigate, result, analytics]);
+  }, [navigate, result]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { getDatabase, ref } from 'firebase/database';
+import { ref } from 'firebase/database';
 
 import { DatabasePath } from '../domain';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
