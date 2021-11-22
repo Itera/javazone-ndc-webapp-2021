@@ -11,17 +11,12 @@ export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { signIn, signOut } = useAuth();
+  const { signIn } = useAuth();
   const { callback, loading, error, result } = useAsync(signIn);
 
   function submitHandler(event: FormEvent) {
     event.preventDefault();
     callback(email, password);
-  }
-
-  async function signOutHandler() {
-    await signOut();
-    navigate(Path.HOME);
   }
 
   useEffect(() => {
@@ -50,9 +45,6 @@ export function SignIn() {
         />
         <button type="submit" disabled={loading}>
           Sign In
-        </button>
-        <button type="button" onClick={signOutHandler}>
-          Sign Out
         </button>
 
         {error !== null && <p>{(error as FirebaseError).code}</p>}

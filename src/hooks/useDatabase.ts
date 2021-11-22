@@ -1,15 +1,10 @@
-import {
-  Database,
-  DatabaseReference,
-  getDatabase,
-  ref,
-} from 'firebase/database';
+import { getDatabase, ref } from 'firebase/database';
 
 import { DatabasePath } from '../domain';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
 import { useState } from 'react';
 
-export function useDatabase(): [DatabaseReference, Database] {
+export function useDatabase() {
   const { app } = useFirebase();
   const [db] = useState(getDatabase(app));
   const [today] = useState(() => {
@@ -17,5 +12,13 @@ export function useDatabase(): [DatabaseReference, Database] {
     return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
   });
 
-  return [ref(db, `${DatabasePath.LEADERBOARD}/${today}`), db];
+  return {
+    root: db,
+    leaderboard: ref(db, DatabasePath.LEADERBOARD),
+    daily: ref(
+      db,
+      `${DatabasePath.LEADERBOARD}/${today}/${DatabasePath.ENTRY}`
+    ),
+    users: ref(db, DatabasePath.USERS),
+  };
 }

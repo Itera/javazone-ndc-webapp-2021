@@ -6,7 +6,7 @@ import { useMount } from './useMount';
 import { useState } from 'react';
 
 export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
-  const [db] = useDatabase();
+  const { daily } = useDatabase();
   const [leaderboard, setLeaderboard] = useState<Array<Required<Entry>>>([]);
   const [ongoing, setOngoing] = useState<Array<Entry>>([]);
 
@@ -29,7 +29,7 @@ export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
   }
 
   function attachObserver() {
-    onValue(db, (snapshot) => {
+    onValue(daily, (snapshot) => {
       const data = snapshot.val() as Leaderboard;
       if (data !== null && data.entries !== undefined) {
         const entries = Object.values(data.entries);

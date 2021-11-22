@@ -1,8 +1,8 @@
 import { Analytics, getAnalytics } from 'firebase/analytics';
+import { Auth, getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Database, get, ref } from 'firebase/database';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
-import { get, ref } from 'firebase/database';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, set } from 'firebase/database';
 
 import { Config } from '../config/Config';
@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router';
 interface FirebaseContext {
   app: FirebaseApp;
   analytics: Analytics;
+  auth: Auth;
+  db: Database;
 }
 
 const firebaseContext = createContext<FirebaseContext | null>(null);
@@ -56,6 +58,8 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
       value={{
         app,
         analytics,
+        db,
+        auth,
       }}
     >
       <Loader init={init}>{children}</Loader>
