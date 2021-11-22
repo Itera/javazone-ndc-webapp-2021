@@ -21,7 +21,7 @@ export function SignIn() {
 
   useEffect(() => {
     if (result !== null) {
-      navigate(Path.USER);
+      navigate(Path.USER, { replace: true });
     }
   }, [navigate, result]);
 

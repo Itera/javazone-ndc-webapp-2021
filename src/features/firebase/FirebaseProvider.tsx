@@ -46,9 +46,9 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
 
     onAuthStateChanged(auth, (user) => {
       if (user === null) {
-        navigate(Path.REGISTRATION);
+        navigate(Path.REGISTRATION, { replace: true });
       } else {
-        navigate(Path.USER);
+        navigate(Path.USER, { replace: true });
       }
     });
   }
