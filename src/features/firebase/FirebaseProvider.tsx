@@ -2,10 +2,13 @@ import { Analytics, getAnalytics } from 'firebase/analytics';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { get, ref } from 'firebase/database';
-import { getDatabase, set } from '@firebase/database';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getDatabase, set } from 'firebase/database';
 
 import { Config } from '../config/Config';
-import { useMount } from '../../hooks/useMount';
+import { Loader } from '../../components/Loader';
+import { Path } from '../../routes';
+import { useNavigate } from 'react-router';
 
 interface FirebaseContext {
   app: FirebaseApp;
@@ -17,9 +20,12 @@ const firebaseContext = createContext<FirebaseContext | null>(null);
 export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
   const [app] = useState(initializeApp(Config.getFirebaseConfig()));
   const [analytics] = useState(getAnalytics(app));
+  const [db] = useState(getDatabase(app));
+  const [auth] = useState(getAuth(app));
+
+  const navigate = useNavigate();
 
   async function init() {
-    const db = getDatabase(app);
     const snapshot = await get(ref(db, '/leaderboard'));
     const data = await snapshot.val();
 
@@ -35,11 +41,15 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
         console.error(err);
       }
     }
-  }
 
-  useMount(() => {
-    init();
-  });
+    onAuthStateChanged(auth, (user) => {
+      if (user === null) {
+        navigate(Path.REGISTRATION);
+      } else {
+        navigate(Path.USER);
+      }
+    });
+  }
 
   return (
     <firebaseContext.Provider
@@ -48,7 +58,7 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
         analytics,
       }}
     >
-      {children}
+      <Loader init={init}>{children}</Loader>
     </firebaseContext.Provider>
   );
 }

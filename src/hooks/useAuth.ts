@@ -6,7 +6,6 @@ import {
   signOut as logout,
   signInAnonymously,
   signInWithEmailAndPassword,
-  updateProfile,
 } from 'firebase/auth';
 
 import { Auth } from 'firebase/auth';

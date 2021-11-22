@@ -7,11 +7,11 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <FirebaseProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <FirebaseProvider>
         <App />
-      </BrowserRouter>
-    </FirebaseProvider>
+      </FirebaseProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
