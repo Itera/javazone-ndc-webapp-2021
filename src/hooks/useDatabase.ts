@@ -5,8 +5,7 @@ import { useFirebase } from '../features/firebase/FirebaseProvider';
 import { useState } from 'react';
 
 export function useDatabase() {
-  const { app } = useFirebase();
-  const [db] = useState(getDatabase(app));
+  const { db } = useFirebase();
   const [today] = useState(() => {
     const date = new Date();
     return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
