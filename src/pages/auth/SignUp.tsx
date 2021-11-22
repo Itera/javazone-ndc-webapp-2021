@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 
 import { FirebaseError } from '@firebase/util';
 import { Path } from '../../routes';
+import { logEvent } from 'firebase/analytics';
 import { useAsync } from '../../hooks/useAsync';
 import { useAuth } from '../../hooks/useAuth';
+import { useFirebase } from '../../features/firebase/FirebaseProvider';
 import { useNavigate } from 'react-router';
 
 export function SignUp() {
+  const { analytics } = useFirebase();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -21,9 +24,10 @@ export function SignUp() {
 
   useEffect(() => {
     if (result !== null) {
+      logEvent(analytics, 'sign_up');
       navigate(Path.USER, { replace: true });
     }
-  }, [navigate, result]);
+  }, [navigate, result, analytics]);
 
   return (
     <>
