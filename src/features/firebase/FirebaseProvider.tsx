@@ -4,11 +4,11 @@ import { Database, get, ref } from 'firebase/database';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { getDatabase, set } from 'firebase/database';
+import { useLocation, useNavigate } from 'react-router';
 
 import { Config } from '../config/Config';
 import { Loader } from '../../components/Loader';
 import { Path } from '../../routes';
-import { useNavigate } from 'react-router';
 
 interface FirebaseContext {
   app: FirebaseApp;
@@ -25,6 +25,7 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
   const [db] = useState(getDatabase(app));
   const [auth] = useState(getAuth(app));
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   async function init() {
@@ -45,7 +46,9 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
     }
 
     onAuthStateChanged(auth, (user) => {
-      if (user === null) {
+      if (location.pathname !== '/') {
+        return;
+      } else if (user === null) {
         navigate(Path.REGISTRATION, { replace: true });
       } else {
         navigate(Path.USER, { replace: true });
