@@ -9,6 +9,7 @@ export interface Entry {
   uid: string;
   start: number;
   finish?: number;
+  elapsed?: number;
 }
 
 export enum DatabasePath {

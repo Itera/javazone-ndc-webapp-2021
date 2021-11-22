@@ -1,6 +1,6 @@
+import { Entry, User } from '../domain';
 import { child, get, push, update } from 'firebase/database';
 
-import { User } from '../domain';
 import { useDatabase } from './useDatabase';
 import { useState } from 'react';
 
@@ -37,10 +37,11 @@ export function useTimer() {
     const now = Date.now();
     const dbRef = child(daily, `${key}`);
     const entry = await get(dbRef);
-    const data = entry.val();
+    const data = entry.val() as Entry;
 
     await update(dbRef, {
       ...data,
+      elapsed: now - data.start,
       finish: now,
     });
 
