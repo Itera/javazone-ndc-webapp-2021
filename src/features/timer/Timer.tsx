@@ -1,5 +1,5 @@
 import { TimeDisplay } from './TimeDisplay';
-import { User } from '@firebase/auth';
+import { User } from '../../domain';
 import { useState } from 'react';
 import { useTimer } from '../../hooks/useTimer';
 

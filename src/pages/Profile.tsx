@@ -1,19 +1,9 @@
-import { Fragment, useEffect } from 'react';
-
-import { Path } from '../routes';
+import { Fragment } from 'react';
 import { Timer } from '../features/timer/Timer';
-import { useNavigate } from 'react-router';
 import { useUser } from '../hooks/useUser';
 
 export function Profile() {
   const user = useUser();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user === null) {
-      navigate(Path.REGISTRATION);
-    }
-  }, [user, navigate]);
 
   if (user === null) {
     return <Fragment />;
@@ -21,7 +11,7 @@ export function Profile() {
 
   return (
     <>
-      <h1>Hello there {user.displayName}</h1>
+      <h1>Hello there {user.username}</h1>
       <Timer user={user} />
     </>
   );

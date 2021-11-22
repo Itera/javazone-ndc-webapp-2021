@@ -27,6 +27,7 @@ async function addUserToCollection(
   await update(documentRef, {
     email,
     username,
+    uid: user.user.uid,
     createdAt: Date.now(),
   });
 }

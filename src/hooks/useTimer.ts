@@ -1,6 +1,6 @@
 import { child, get, push, update } from 'firebase/database';
 
-import { User } from 'firebase/auth';
+import { User } from '../domain';
 import { useDatabase } from './useDatabase';
 import { useState } from 'react';
 
