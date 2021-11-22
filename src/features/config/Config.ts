@@ -1,5 +1,24 @@
+interface IConfig {
+  features: {
+    logging: 'trace' | 'debug' | 'info' | 'warn' | 'error';
+  };
+  firebase: {
+    apiKey: string;
+    appId: string;
+    authDomain: string;
+    databaseURL: string;
+    measurementId: string;
+    messagingSenderId: string;
+    projectId: string;
+    storageBucket: string;
+  };
+}
+
 export class Config {
-  static config = {
+  static config: IConfig = {
+    features: {
+      logging: 'trace',
+    },
     firebase: {
       apiKey: 'AIzaSyDGMJscARK_Wkq2CGhy7wgu0BOd-51VXwo',
       appId: '1:1015382247649:web:21b4626b518b85223d8fa0',
@@ -19,5 +38,9 @@ export class Config {
 
   static getFirebaseConfig() {
     return Config.getConfig().firebase;
+  }
+
+  static getFeatures() {
+    return Config.getConfig().features;
   }
 }
