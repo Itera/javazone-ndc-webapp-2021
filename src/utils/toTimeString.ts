@@ -1,5 +1,5 @@
 function pad(value: number, length: number): string {
-  return value.toString().padStart(length, '000');
+  return value.toString().padStart(length, "000");
 }
 
 export function toTimeString(start: number, finish: number): string {
