@@ -1,4 +1,4 @@
-import { TimeDisplay } from './TimeDisplay';
+import { TimeDisplay } from '../../components/TimeDisplay';
 import { User } from '../../domain';
 import { useState } from 'react';
 import { useTimer } from '../../hooks/useTimer';

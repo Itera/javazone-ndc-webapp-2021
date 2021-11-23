@@ -1,4 +1,4 @@
-import { TimeDisplay } from '../timer/TimeDisplay';
+import { TimeDisplay } from '../../components/TimeDisplay';
 import { useLeaderboard } from '../../hooks/useLeaderboard';
 
 export function Ongoing() {

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { useLeaderboard } from '../../../hooks/useLeaderboard';
 import { Path } from '../../../routes';
 import { toTimeString } from '../../../utils/toTimeString';
-import { TimeDisplay } from '../../timer/TimeDisplay';
+import { TimeDisplay } from '../../../components/TimeDisplay';
 
 export function Ongoing() {
   const navigate = useNavigate();

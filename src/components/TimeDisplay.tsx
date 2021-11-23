@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { toTimeString } from '../../utils/toTimeString';
+import { toTimeString } from '../utils/toTimeString';
 
 interface Props {
   start: number | null;

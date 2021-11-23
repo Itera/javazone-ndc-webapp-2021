@@ -1,13 +1,13 @@
-import { motion } from "framer-motion";
-import { useLocation } from "react-router";
-import { toTimeString } from "../../../utils/toTimeString";
-import { Highscore } from "../../firebase/Highscore";
+import { motion } from 'framer-motion';
+import { useLocation } from 'react-router';
+import { toTimeString } from '../../../utils/toTimeString';
+import { Highscore } from '../../firebase/Highscore';
 
 export function Completed() {
   const location = useLocation();
   const run = location.state;
   const elapsed = toTimeString(run.start, run.finish);
-  const [minutes, seconds, milliseconds] = elapsed.split(":");
+  const [minutes, seconds, milliseconds] = elapsed.split(':');
 
   return (
     <div className="bg-ivory fill-screen column">
@@ -19,7 +19,7 @@ export function Completed() {
       >
         <p
           style={{
-            fontWeight: "bold",
+            fontWeight: 'bold',
           }}
         >
           <span style={{ fontSize: 160 }}>{minutes}</span>
@@ -29,7 +29,7 @@ export function Completed() {
       </motion.section>
       <motion.section
         style={{ flexGrow: 0, height: 0 }}
-        animate={{ flexGrow: 100, height: "auto" }}
+        animate={{ flexGrow: 100, height: 'auto' }}
         transition={{ duration: 2, delay: 3 }}
       >
         <Highscore />
