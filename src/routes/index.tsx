@@ -7,14 +7,16 @@ import { SignIn } from "../pages/auth/SignIn";
 import { SignUp } from "../pages/auth/SignUp";
 import { Game } from "../pages/game/Game";
 import { Countdown } from "../pages/game/Countdown";
+import { Finish } from "../pages/game/Finish";
 
 export enum Path {
   HOME = "/",
   USER = "/profile",
   LEADERBOARD = "/leaderboard",
 
-  GAME = "/game/timer",
   COUNTDOWN = "/game/countdown",
+  GAME = "/game/timer",
+  FINISH = "/game/finish",
 
   REGISTRATION = "/auth/sign-up",
   LOGIN = "/auth/sign-in",
@@ -27,8 +29,9 @@ export function Router() {
       <Route path={Path.USER} element={<Profile />} />
       <Route path={Path.LEADERBOARD} element={<Overview />} />
 
-      <Route path={Path.GAME} element={<Game />} />
       <Route path={Path.COUNTDOWN} element={<Countdown />} />
+      <Route path={Path.GAME} element={<Game />} />
+      <Route path={Path.FINISH} element={<Finish />} />
 
       <Route path={Path.REGISTRATION} element={<SignUp />} />
       <Route path={Path.LOGIN} element={<SignIn />} />
