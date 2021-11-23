@@ -1,13 +1,13 @@
 @use './utility/fonts' as *;
 
-.font-family-ibm-plex-sans {
-  font-family: $font-family-ibm-plex-sans;
-}
+$fonts: (
+  'ibm-plex-sans': $font-family-ibm-plex-sans,
+  'neue-machina': $font-family-neue-machina,
+  'feeling-passionate': $font-family-feeling-passionate,
+);
 
-.font-family-neue-machina {
-  font-family: $font-family-neue-machina;
-}
-
-.font-family-feeling-passionate {
-  font-family: $font-family-feeling-passionate;
+@each $key, $val in $fonts {
+  .font-family-#{$key} {
+    font-family: $val;
+  }
 }

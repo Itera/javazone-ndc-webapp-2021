@@ -1,3 +1,35 @@
+.color-gold-at-night {
+  color: #261e00;
+}
+
+.color-lobster-at-night {
+  color: #260b08;
+}
+
+.color-fushia-at-night {
+  color: #240833;
+}
+
+.color-sea-at-night {
+  color: #000833;
+}
+
+.color-jade-at-night {
+  color: #06231c;
+}
+
+.color-midnight {
+  color: black;
+}
+
+.color-white {
+  color: white;
+}
+
+.color-gold {
+  color: #ffdd00;
+}
+
 .color-lobster {
   color: #ff4b33;
 }
@@ -14,12 +46,68 @@
   color: #37e17b;
 }
 
-.color-gold {
-  color: #ffdd00;
+.color-ivory {
+  color: #eeede4;
 }
 
-.bg-ivory {
-  background-color: #eeede4;
+.color-lemon {
+  color: #fae187;
+}
+
+.color-peach {
+  color: #e8907d;
+}
+
+.color-lavender {
+  color: #977de8;
+}
+
+.color-sky {
+  color: #5e9bf6;
+}
+
+.color-grass {
+  color: #9ae199;
+}
+
+.color-lemon-in-bright-light {
+  color: #fdf6db;
+}
+
+.color-peach-in-bright-light {
+  color: #f8ded8;
+}
+
+.color-lavender-in-bright-light {
+  color: #e0d8f8;
+}
+
+.color-sky-in-bright-light {
+  color: #cfe1fc;
+}
+
+.color-grass-in-bright-light {
+  color: #e1f6e0;
+}
+
+.bg-gold-at-night {
+  background-color: #261e00;
+}
+
+.bg-lobster-at-night {
+  background-color: #260b08;
+}
+
+.bg-fushia-at-night {
+  background-color: #240833;
+}
+
+.bg-sea-at-night {
+  background-color: #000833;
+}
+
+.bg-jade-at-night {
+  background-color: #06231c;
 }
 
 .bg-midnight {
@@ -48,6 +136,50 @@
 
 .bg-jade {
   background-color: #37e17b;
+}
+
+.bg-ivory {
+  background-color: #eeede4;
+}
+
+.bg-lemon {
+  background-color: #fae187;
+}
+
+.bg-peach {
+  background-color: #e8907d;
+}
+
+.bg-lavender {
+  background-color: #977de8;
+}
+
+.bg-sky {
+  background-color: #5e9bf6;
+}
+
+.bg-grass {
+  background-color: #9ae199;
+}
+
+.bg-lemon-in-bright-light {
+  background-color: #fdf6db;
+}
+
+.bg-peach-in-bright-light {
+  background-color: #f8ded8;
+}
+
+.bg-lavender-in-bright-light {
+  background-color: #e0d8f8;
+}
+
+.bg-sky-in-bright-light {
+  background-color: #cfe1fc;
+}
+
+.bg-grass-in-bright-light {
+  background-color: #e1f6e0;
 }
 
 .center {
