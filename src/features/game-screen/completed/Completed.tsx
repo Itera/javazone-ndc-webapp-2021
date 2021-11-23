@@ -10,17 +10,10 @@ export function Completed() {
   const [minutes, seconds, milliseconds] = elapsed.split(":");
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <div className="bg-ivory fill-screen column">
       <motion.section
-        style={{
-          backgroundColor: "#EEEDE4",
-          textAlign: "center",
-          color: "#0029FF",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexGrow: 10,
-        }}
+        className="color-sea center-content"
+        style={{ flexGrow: 10 }}
         animate={{ flexGrow: 1 }}
         transition={{ duration: 2, delay: 3 }}
       >

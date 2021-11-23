@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { toTimeString } from "../../utils/toTimeString";
+import { toTimeString } from '../../utils/toTimeString';
 
 interface Props {
   start: number | null;
+  column?: boolean;
 }
 
 export function TimeDisplay(props: Props): JSX.Element | null {
-  const { start } = props;
+  const { start, column = false } = props;
   const [, setTick] = useState(0);
 
   useEffect(() => {
@@ -30,13 +31,16 @@ export function TimeDisplay(props: Props): JSX.Element | null {
 
   const time = toTimeString(start, Date.now());
 
-  const [minutes, seconds, milliseconds] = time.split(":");
+  const [minutes, seconds, milliseconds] = time.split(':');
 
   return (
-    <p style={{ fontSize: "10rem", textAlign: "center" }}>
-      {minutes}:<br />
-      {seconds}:<br />
-      {milliseconds}
+    <p
+      className={`center ${column ? 'column' : 'row'}`}
+      style={{ fontSize: '8rem' }}
+    >
+      <span>{minutes}:</span>
+      <span>{seconds}:</span>
+      <span>{milliseconds.slice(0, 2)}</span>
     </p>
   );
 }

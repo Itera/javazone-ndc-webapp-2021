@@ -12,24 +12,21 @@ export function Countdown() {
         delay={0}
         duration={DURATION}
         number={3}
-        color="#FF4B33"
-        backgroundColor="#FFDD00"
+        className="bg-gold color-lobster fill-screen center-content absolute"
       />
       <Count
         key="count-2"
         delay={DELAY}
         duration={DURATION}
         number={2}
-        color="#0029FF"
-        backgroundColor="#37E17B"
+        className="bg-jade color-sea fill-screen center-content absolute"
       />
       <Count
         key="count-1"
         delay={DELAY * 2}
         duration={DURATION}
         number={1}
-        color="#FFDD00"
-        backgroundColor="#AF1DFF"
+        className="bg-fuschia color-gold fill-screen center-content absolute"
       />
     </AnimatePresence>
   );

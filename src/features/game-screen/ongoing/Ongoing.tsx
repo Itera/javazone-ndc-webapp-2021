@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import { useLeaderboard } from "../../../hooks/useLeaderboard";
-import { Path } from "../../../routes";
-import { toTimeString } from "../../../utils/toTimeString";
-import { TimeDisplay } from "../../timer/TimeDisplay";
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useLeaderboard } from '../../../hooks/useLeaderboard';
+import { Path } from '../../../routes';
+import { toTimeString } from '../../../utils/toTimeString';
+import { TimeDisplay } from '../../timer/TimeDisplay';
 
 export function Ongoing() {
   const navigate = useNavigate();
@@ -26,25 +26,18 @@ export function Ongoing() {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
-      <div style={{ flexGrow: 6, height: "100vh" }}></div>
+    <div className="row">
+      <div className="fill-vh" style={{ flexGrow: 6 }}></div>
       <div
-        style={{
-          flexGrow: 1,
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backgroundColor: "#EEEDE4",
-        }}
+        className="column center-content space-around bg-ivory fill-vh"
+        style={{ flexGrow: 1 }}
       >
-        <section style={{ textAlign: "center" }}>
+        <section className="center">
           <h2>Highscore</h2>
           {fastest && <p>{toTimeString(fastest.start, fastest.finish)}</p>}
           {!fastest && <p>Pending...</p>}
         </section>
-        <TimeDisplay start={start} />
+        <TimeDisplay start={start} column />
         <button onClick={finished}>Done</button>
       </div>
     </div>

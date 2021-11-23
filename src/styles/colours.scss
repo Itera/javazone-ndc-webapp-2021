@@ -1,0 +1,55 @@
+@use './utility/variables' as *;
+
+// font colours
+.color-lobster {
+  color: $color-lobster;
+}
+
+.color-fuschia {
+  color: $color-fushia;
+}
+
+.color-sea {
+  color: $color-sea;
+}
+
+.color-jade {
+  color: $color-jade;
+}
+
+.color-gold {
+  color: $color-gold;
+}
+
+// background colours
+.bg-ivory {
+  background-color: $color-ivory;
+}
+
+.bg-midnight {
+  background-color: $color-midnight;
+}
+
+.bg-white {
+  background-color: $color-white;
+}
+
+.bg-gold {
+  background-color: $color-gold;
+}
+
+.bg-lobster {
+  background-color: $color-lobster;
+}
+
+.bg-fuschia {
+  background-color: $color-fushia;
+}
+
+.bg-sea {
+  background-color: $color-sea;
+}
+
+.bg-jade {
+  background-color: $color-jade;
+}

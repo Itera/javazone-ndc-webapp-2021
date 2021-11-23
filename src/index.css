@@ -1,0 +1,98 @@
+.color-lobster {
+  color: #ff4b33;
+}
+
+.color-fuschia {
+  color: #b32bff;
+}
+
+.color-sea {
+  color: #0029ff;
+}
+
+.color-jade {
+  color: #37e17b;
+}
+
+.color-gold {
+  color: #ffdd00;
+}
+
+.bg-ivory {
+  background-color: #eeede4;
+}
+
+.bg-midnight {
+  background-color: black;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-gold {
+  background-color: #ffdd00;
+}
+
+.bg-lobster {
+  background-color: #ff4b33;
+}
+
+.bg-fuschia {
+  background-color: #b32bff;
+}
+
+.bg-sea {
+  background-color: #0029ff;
+}
+
+.bg-jade {
+  background-color: #37e17b;
+}
+
+.center {
+  text-align: center;
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.column > * {
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.row > * {
+  margin: 0;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.fill-screen {
+  height: 100vh;
+  width: 100vw;
+}
+
+.fill-vh {
+  height: 100vh;
+}
+
+.fill-vw {
+  width: 100vw;
+}
+
+.absolute {
+  position: absolute;
+}
