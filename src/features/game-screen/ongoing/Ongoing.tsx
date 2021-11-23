@@ -32,7 +32,7 @@ export function Ongoing() {
         className="column center-content space-around bg-ivory fill-vh"
         style={{ flexGrow: 1 }}
       >
-        <section className="center">
+        <section className="center font-family-neue-machina">
           <h2>Highscore</h2>
           {fastest && <p>{toTimeString(fastest.start, fastest.finish)}</p>}
           {!fastest && <p>Pending...</p>}

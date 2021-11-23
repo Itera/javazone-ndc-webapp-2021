@@ -35,12 +35,12 @@ export function TimeDisplay(props: Props): JSX.Element | null {
 
   return (
     <p
-      className={`center ${column ? 'column' : 'row'}`}
+      className={`center font-family-neue-machina ${column ? 'column' : 'row'}`}
       style={{ fontSize: '8rem' }}
     >
       <span>{minutes}:</span>
       <span>{seconds}:</span>
-      <span>{milliseconds.slice(0, 2)}</span>
+      <span>{milliseconds}</span>
     </p>
   );
 }

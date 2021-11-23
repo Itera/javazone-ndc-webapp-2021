@@ -229,6 +229,18 @@
   font-style: normal;
   src: url(./fonts/Feeling-Passionate.woff2) format("woff2"), url(./fonts/Feeling-Passionate.woff) format("woff"), url(./fonts/Feeling-Passionate.ttf) format("truetype"), url() format("opentype");
 }
+.font-family-ibm-plex-sans {
+  font-family: "IBM Plex Sans";
+}
+
+.font-family-neue-machina {
+  font-family: "Neue Machina";
+}
+
+.font-family-feeling-passionate {
+  font-family: "Feeling Passionate";
+}
+
 body {
   font-family: "IBM Plex Sans";
   font-weight: 400;

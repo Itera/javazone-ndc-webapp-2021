@@ -10,26 +10,22 @@ export function Completed() {
   const [minutes, seconds, milliseconds] = elapsed.split(':');
 
   return (
-    <div className="bg-ivory fill-screen column">
+    <div className="bg-ivory fill-screen">
       <motion.section
         className="color-sea center-content"
-        style={{ flexGrow: 10 }}
-        animate={{ flexGrow: 1 }}
+        style={{ height: '100vh' }}
+        animate={{ height: '40vh' }}
         transition={{ duration: 2, delay: 3 }}
       >
-        <p
-          style={{
-            fontWeight: 'bold',
-          }}
-        >
+        <p className="font-family-neue-machina" style={{ fontWeight: 'bold' }}>
           <span style={{ fontSize: 160 }}>{minutes}</span>
           <span style={{ fontSize: 160 }}>:{seconds}</span>
           <span style={{ fontSize: 96 }}>:{milliseconds}</span>
         </p>
       </motion.section>
       <motion.section
-        style={{ flexGrow: 0, height: 0 }}
-        animate={{ flexGrow: 100, height: 'auto' }}
+        style={{ height: '0vh' }}
+        animate={{ height: '60vh' }}
         transition={{ duration: 2, delay: 3 }}
       >
         <Highscore />
