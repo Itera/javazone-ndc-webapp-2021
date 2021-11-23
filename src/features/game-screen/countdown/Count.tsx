@@ -1,5 +1,5 @@
-import { motion, MotionProps } from "framer-motion";
-import { PropsWithChildren } from "react";
+import { motion, MotionProps } from 'framer-motion';
+import { PropsWithChildren } from 'react';
 
 interface Props extends MotionProps {
   readonly duration: number;
@@ -15,14 +15,14 @@ export function Count(props: PropsWithChildren<Props>) {
     <motion.div
       {...rest}
       transition={{ duration, delay }}
-      initial={{ translateX: "100vw" }}
-      animate={{ translateX: "0vw" }}
-      exit={{ translateX: "-100vw" }}
+      initial={{ translateX: '100vw' }}
+      animate={{ translateX: '0vw' }}
+      exit={{ translateX: '-100vw' }}
       style={{
         zIndex: -number,
       }}
     >
-      <p style={{ fontSize: "10rem" }}>{number}</p>
+      <h1 style={{ fontSize: '10rem' }}>{number}</h1>
     </motion.div>
   );
 }
