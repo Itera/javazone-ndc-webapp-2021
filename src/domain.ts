@@ -10,6 +10,11 @@ export interface Entry {
   start: number;
   finish: number;
   elapsed: number;
+
+  name: string;
+  email: string;
+  phone: string;
+  consent: boolean;
 }
 
 export enum DatabasePath {

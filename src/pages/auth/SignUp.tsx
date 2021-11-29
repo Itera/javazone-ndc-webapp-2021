@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 
 import { FirebaseError } from "@firebase/util";
 import { Path } from "../../routes";
-import { logEvent } from "firebase/analytics";
 import { useAsync } from "../../hooks/useAsync";
 import { useAuth } from "../../hooks/useAuth";
-import { useFirebase } from "../../features/firebase/FirebaseProvider";
 import { useLocation, useNavigate } from "react-router";
 import { UnregisteredEntry } from "../../hooks/useUnregistered";
 import { useDatabase } from "../../hooks/useDatabase";
@@ -29,10 +27,14 @@ export function SignUp() {
     event.preventDefault();
     callback(name, phone, email, consent, uid, username).then(() => {
       push(daily, {
-        username,
         start,
         finish,
         elapsed,
+        name,
+        username,
+        phone,
+        email,
+        consent,
       }).then(() => {
         navigate(Path.USER, { replace: true });
       });
