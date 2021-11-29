@@ -50,7 +50,8 @@ export function Unregistered() {
               position: "fixed",
               top: 0,
               right: 0,
-              backgroundColor: "red",
+              color: "#fff",
+              backgroundColor: "rgb(0, 41, 255)",
               padding: "0.5rem 0.5rem 4rem 4rem",
               clipPath: "polygon(0 0, 100% 0, 100% 100%)",
             }}

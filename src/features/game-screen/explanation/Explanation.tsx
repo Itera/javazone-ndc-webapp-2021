@@ -1,32 +1,30 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Path } from "../../../routes";
-import { Keyboard } from "./Keyboard";
 
-export function Explanation() {
-  const [username, setUsername] = useState("");
+interface Props {
+  readonly username: string;
+}
 
+export function Explanation(props: Props) {
   return (
-    <div className="row">
-      <div style={{ flex: "1 1 0", padding: "1rem" }}>
-        <h1>Build Itera with us!</h1>
-        <p>
-          Use the cubes on the ground to build the image that pops up on this
-          screen.
-        </p>
-        <p>Touch "DONE" when you are finished to stop the timer</p>
+    <div style={{ padding: "4rem 2rem", margin: "auto 0" }}>
+      <h1 style={{ fontSize: 94 }}>Build Itera with us!</h1>
+      <p style={{ fontSize: 55, lineHeight: 2 }}>
+        Use the cubes on the ground to build the image that pops up on this
+        screen.
+      </p>
+      <p style={{ fontSize: 55, lineHeight: 2 }}>
+        Touch "DONE" when you are finished to stop the timer
+      </p>
 
-        <Link to={Path.COUNTDOWN} state={username} replace>
-          Start Game
-        </Link>
-      </div>
-      <div
-        className="center-content column"
-        style={{ flex: "1 1 0", padding: "1rem" }}
+      <Link
+        to={Path.COUNTDOWN}
+        className="button"
+        state={props.username}
+        replace
       >
-        <h2>{username}</h2>
-        <Keyboard onChange={(value) => setUsername(() => value)} />
-      </div>
+        → Start Game
+      </Link>
     </div>
   );
 }

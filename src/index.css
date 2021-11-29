@@ -212,6 +212,10 @@
   justify-content: space-around;
 }
 
+.equal-width > * {
+  flex: 1 1 0;
+}
+
 .fill-screen {
   height: 100vh;
   width: 100vw;
@@ -231,6 +235,18 @@
 
 tr[data-highlight=true] {
   color: #0029ff;
+}
+
+.button {
+  display: inline-block;
+  color: white;
+  background-color: #0029ff;
+  padding: 2rem 3rem;
+  font-size: 2rem;
+  text-decoration: none;
+}
+.button + * {
+  margin-top: 3rem;
 }
 
 @font-face {
@@ -457,4 +473,8 @@ h5 {
 }
 p {
   line-height: 0.8em;
+}
+
+* {
+  box-sizing: border-box;
 }
