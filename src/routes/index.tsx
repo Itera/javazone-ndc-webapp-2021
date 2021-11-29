@@ -9,6 +9,7 @@ import { Game } from "../pages/game/Game";
 import { Countdown } from "../pages/game/Countdown";
 import { Finish } from "../pages/game/Finish";
 import { Unregistered } from "../features/firebase/Unregistered";
+import { UserRegistration } from "../pages/game/UserRegistration";
 
 export enum Path {
   HOME = "/",
@@ -16,6 +17,7 @@ export enum Path {
   LEADERBOARD = "/leaderboard",
   UNREGISTERED = "/unregistered",
 
+  EXPLANATION = "/game/explanation",
   COUNTDOWN = "/game/countdown",
   GAME = "/game/timer",
   FINISH = "/game/finish",
@@ -32,6 +34,7 @@ export function Router() {
       <Route path={Path.LEADERBOARD} element={<Overview />} />
       <Route path={Path.UNREGISTERED} element={<Unregistered />} />
 
+      <Route path={Path.EXPLANATION} element={<UserRegistration />} />
       <Route path={Path.COUNTDOWN} element={<Countdown />} />
       <Route path={Path.GAME} element={<Game />} />
       <Route path={Path.FINISH} element={<Finish />} />

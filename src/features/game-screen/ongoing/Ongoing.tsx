@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useLeaderboard } from "../../../hooks/useLeaderboard";
 import { Path } from "../../../routes";
 import { toTimeString } from "../../../utils/toTimeString";
@@ -7,15 +7,19 @@ import { TimeDisplay } from "../../../components/TimeDisplay";
 import { useTimer } from "../../../hooks/useTimer";
 
 export function Ongoing() {
+  const location = useLocation();
   const navigate = useNavigate();
   const leaderboard = useLeaderboard();
   const { start: startTimer, stop } = useTimer();
   const [start] = useState(Date.now());
 
   const fastest = leaderboard[0];
+  const username = location.state.username;
+
+  console.log(username);
 
   useEffect(() => {
-    startTimer("RAG", start);
+    startTimer(username, start);
   }, []);
 
   function finished() {
@@ -24,7 +28,7 @@ export function Ongoing() {
       navigate(Path.FINISH, {
         replace: true,
         state: {
-          username: "RAG",
+          username: username,
           start: start,
           finish: now,
           elapsed: elapsed,
