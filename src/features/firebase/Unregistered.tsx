@@ -6,7 +6,6 @@ import { toTimeString } from '../../utils/toTimeString';
 import { useMount } from '../../hooks/useMount';
 import { useState } from 'react';
 import { useUnregistered } from '../../hooks/useUnregistered';
-import { userInfo } from 'os';
 
 function Timer(props: { start: number }) {
   const [, setTick] = useState(0);

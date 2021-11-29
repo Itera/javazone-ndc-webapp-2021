@@ -5,9 +5,10 @@ interface Props {
 
 export function Cube(props: Props) {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: 'relative' }}>
       <img
         src={props.src}
+        alt=""
         style={{
           height: 300,
           width: 300,
@@ -16,17 +17,17 @@ export function Cube(props: Props) {
       />
       <span
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "5rem",
-          marginTop: "-9rem",
-          marginRight: "-1rem",
-          textDecoration: "underline",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '5rem',
+          marginTop: '-9rem',
+          marginRight: '-1rem',
+          textDecoration: 'underline',
           zIndex: 2,
         }}
       >
-        {props.letter ? props.letter : "_"}
+        {props.letter ? props.letter : '_'}
       </span>
     </div>
   );

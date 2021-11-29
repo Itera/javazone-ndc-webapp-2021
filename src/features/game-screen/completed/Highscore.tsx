@@ -1,7 +1,6 @@
 import { Entry } from '../../../domain';
 import { toTimeString } from '../../../utils/toTimeString';
 import { useLeaderboard } from '../../../hooks/useLeaderboard';
-import { useMount } from '../../../hooks/useMount';
 
 interface Props {
   readonly entry: Entry;

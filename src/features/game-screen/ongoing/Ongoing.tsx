@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import { useLeaderboard } from "../../../hooks/useLeaderboard";
-import { Path } from "../../../routes";
-import { toTimeString } from "../../../utils/toTimeString";
-import { TimeDisplay } from "../../../components/TimeDisplay";
-import { useTimer } from "../../../hooks/useTimer";
+import { useLocation, useNavigate } from 'react-router';
+
+import { Path } from '../../../routes';
+import { TimeDisplay } from '../../../components/TimeDisplay';
+import { toTimeString } from '../../../utils/toTimeString';
+import { useLeaderboard } from '../../../hooks/useLeaderboard';
+import { useMount } from '../../../hooks/useMount';
+import { useState } from 'react';
+import { useTimer } from '../../../hooks/useTimer';
 
 export function Ongoing() {
   const location = useLocation();
@@ -18,9 +20,9 @@ export function Ongoing() {
 
   console.log(username);
 
-  useEffect(() => {
+  useMount(() => {
     startTimer(username, start);
-  }, []);
+  });
 
   function finished() {
     const now = Date.now();

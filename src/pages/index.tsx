@@ -5,8 +5,8 @@ export function Home() {
   return (
     <>
       <h1>Navigation links</h1>
-      <Link to={Path.LEADERBOARD}>Leaderboard</Link>
-      <Link to={Path.REGISTRATION}>Registration</Link>
+      <Link to={Path.EXPLANATION}>Game</Link>
+      <Link to={Path.UNREGISTERED}>Registration</Link>
       <Link to={Path.LOGIN}>Sign In</Link>
     </>
   );
