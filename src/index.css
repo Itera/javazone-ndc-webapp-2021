@@ -549,3 +549,19 @@ ul li:before {
 ul li + li {
   margin-top: 4.55rem;
 }
+
+table {
+  width: 100%;
+  padding: 0 2rem 0 0;
+}
+table tbody {
+  width: 100%;
+}
+table tbody tr {
+  display: block;
+  width: 100%;
+}
+table tbody tr > td:last-of-type {
+  width: 100%;
+  text-align: right;
+}

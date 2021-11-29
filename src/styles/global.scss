@@ -106,3 +106,22 @@ ul {
     }
   }
 }
+
+table {
+  width: 100%;
+  padding: 0 2rem 0 0;
+
+  tbody {
+    width: 100%;
+
+    tr {
+      display: block;
+      width: 100%;
+    }
+
+    tr > td:last-of-type {
+      width: 100%;
+      text-align: right;
+    }
+  }
+}
