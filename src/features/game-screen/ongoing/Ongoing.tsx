@@ -8,7 +8,7 @@ import { useTimer } from "../../../hooks/useTimer";
 
 export function Ongoing() {
   const navigate = useNavigate();
-  const [leaderboard] = useLeaderboard();
+  const leaderboard = useLeaderboard();
   const { start: startTimer, stop } = useTimer();
   const [start] = useState(Date.now());
 
@@ -24,6 +24,7 @@ export function Ongoing() {
       navigate(Path.FINISH, {
         replace: true,
         state: {
+          username: "RAG",
           start: start,
           finish: now,
           elapsed: elapsed,

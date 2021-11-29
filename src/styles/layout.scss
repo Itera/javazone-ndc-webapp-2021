@@ -1,3 +1,5 @@
+@use "./utility/variables" as *;
+
 .center {
   text-align: center;
 }
@@ -45,4 +47,8 @@
 
 .absolute {
   position: absolute;
+}
+
+tr[data-highlight="true"] {
+  color: $color-sea;
 }

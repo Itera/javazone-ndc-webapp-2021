@@ -8,16 +8,15 @@ export interface User {
 export interface Entry {
   username: string;
   start: number;
-  finish?: number;
-  elapsed?: number;
-  uid?: string;
+  finish: number;
+  elapsed: number;
 }
 
 export enum DatabasePath {
-  LEADERBOARD = '/leaderboard',
-  ENTRY = '/entries',
-  USERS = '/users',
-  UNREGISTERED = '/unregistered',
+  LEADERBOARD = "/leaderboard",
+  ENTRY = "/entries",
+  USERS = "/users",
+  UNREGISTERED = "/unregistered",
 }
 
 export interface Leaderboard {

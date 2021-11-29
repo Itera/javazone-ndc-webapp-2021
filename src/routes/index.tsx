@@ -20,7 +20,7 @@ export enum Path {
   GAME = "/game/timer",
   FINISH = "/game/finish",
 
-  REGISTRATION = "/auth/sign-up:uid",
+  REGISTRATION = "/auth/sign-up",
   LOGIN = "/auth/sign-in",
 }
 

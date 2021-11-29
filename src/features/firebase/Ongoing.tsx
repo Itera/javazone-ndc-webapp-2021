@@ -1,5 +1,5 @@
-import { TimeDisplay } from '../../components/TimeDisplay';
-import { useLeaderboard } from '../../hooks/useLeaderboard';
+import { TimeDisplay } from "../../components/TimeDisplay";
+import { useLeaderboard } from "../../hooks/useLeaderboard";
 
 export function Ongoing() {
   const [, ongoing] = useLeaderboard();
@@ -7,14 +7,14 @@ export function Ongoing() {
   return (
     <table>
       <tbody>
-        {ongoing.map((entry) => (
+        {/* {ongoing.map((entry) => (
           <tr key={entry.start}>
             <td>{entry.username}</td>
             <td>
               <TimeDisplay start={entry.start} />
             </td>
           </tr>
-        ))}
+        ))} */}
       </tbody>
     </table>
   );
