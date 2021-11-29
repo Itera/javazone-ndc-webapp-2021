@@ -11,7 +11,7 @@ export enum Path {
   USER = '/profile',
   LEADERBOARD = '/leaderboard',
 
-  REGISTRATION = '/auth/sign-up',
+  REGISTRATION = '/auth/sign-up:uid',
   LOGIN = '/auth/sign-in',
 }
 

@@ -1,56 +1,76 @@
-import { DatabaseReference, child, update } from '@firebase/database';
+import { DatabaseReference, child, update, remove } from '@firebase/database';
 import {
   User,
-  UserCredential,
-  signInAnonymously,
+  //UserCredential,
+  //signInAnonymously, 
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-import { Auth } from 'firebase/auth';
+//import { Auth } from 'firebase/auth';
 import { useDatabase } from './useDatabase';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
 import { Logger } from '../features/logging/logger';
 import { useState } from 'react';
 
-async function createUser(auth: Auth, logger: Logger): Promise<UserCredential> {
+/* async function createUser(auth: Auth, logger: Logger): Promise<UserCredential> {
   logger.trace('Creating a new user');
   const credentials = await signInAnonymously(auth);
   return credentials;
-}
+} */ 
 
 async function addUserToCollection(
   db: DatabaseReference,
-  user: UserCredential,
   email: string,
   username: string,
+  phone: string,
+  consent: boolean,
   logger: Logger
 ): Promise<void> {
-  logger.trace('Creating a document entry for user', `[uid=${user.user.uid}]`);
-  const documentRef = child(db, `/${user.user.uid}`);
+  logger.trace('Creating a document entry for user', `[uid=${phone}]`);
+  const documentRef = child(db, `/${phone}`);
   await update(documentRef, {
     email,
     username,
-    uid: user.user.uid,
-    createdAt: Date.now(),
+    phone,
+    consent,
+    createdAt: Date.now()
   });
+}
+
+async function removeFromUnregistered(
+  db: DatabaseReference,
+  entry: string,
+  logger: Logger,
+): Promise<void> {
+  logger.trace('Removing from Unregistered', `[entry=${entry}]`);
+  const documentRef = child(db, `/${entry}`);
+  await remove(documentRef);
 }
 
 export function useAuth() {
   const [logger] = useState(new Logger('useAuth'));
-  const { users } = useDatabase();
+  const { users, unregistered } = useDatabase();
   const { auth } = useFirebase();
 
-  async function addUser(username: string, email: string): Promise<User> {
+  async function addUser(name: string, phone: string, email: string, consent: boolean, entry: string): Promise<null|User> {
     logger.trace('Adding new user');
-    const credentials = await createUser(auth, logger);
-    await addUserToCollection(users, credentials, email, username, logger);
+    //const credentials = await createUser(auth, logger);
+    await addUserToCollection(users, email, name, phone, consent, logger);
 
     logger.info(
       'Successfully created new user',
-      `[uid=${credentials.user.uid}]`
+      `[uid=${phone}]`
     );
-    return credentials.user;
-  }
+
+    await removeFromUnregistered(unregistered, entry, logger);
+    logger.info(
+      'Successfully removed user from unregistered',
+      `[uid=${entry}]`
+    );
+
+    //return credentials.user;
+    return null;
+  } 
 
   async function signIn(email: string, password: string): Promise<User> {
     logger.trace('Signing in user');

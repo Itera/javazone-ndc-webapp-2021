@@ -6,13 +6,18 @@ import { logEvent } from 'firebase/analytics';
 import { useAsync } from '../../hooks/useAsync';
 import { useAuth } from '../../hooks/useAuth';
 import { useFirebase } from '../../features/firebase/FirebaseProvider';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 export function SignUp() {
   const { analytics } = useFirebase();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [consent, setConsent] = useState(false);
+  const location = useLocation();
+  const {uid, elapsed} = location.state;
+
 
   const { addUser } = useAuth();
   const { callback, loading, error, result } = useAsync(addUser);
@@ -20,7 +25,7 @@ export function SignUp() {
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     logEvent(analytics, 'sign_up');
-    callback(username, email);
+    callback(name, phone, email, consent, uid);
   }
 
   useEffect(() => {
@@ -31,13 +36,24 @@ export function SignUp() {
 
   return (
     <>
-      <h1>Registration</h1>
+      <h1>Registration {uid.split('-')[0]}</h1>
       <form onSubmit={submitHandler}>
+        <label htmlFor="name">Name</label>
         <input
           type="text"
           placeholder="name"
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
+          id="name"
+          value={name}
+          onChange={(event) => setName(event.currentTarget.value)}
+          required
+        />
+        <label htmlFor="phone">Phone number</label>
+        <input
+          type="tel"
+          placeholder="11111111"
+          id="phone"
+          value={phone}
+          onChange={(event) => setPhone(event.currentTarget.value)}
           required
         />
         <input
@@ -47,6 +63,13 @@ export function SignUp() {
           onChange={(event) => setEmail(event.target.value)}
           required
         />
+        <input 
+          type="checkbox"
+          id="consent"
+          checked={consent}
+          onChange={(event) => setConsent(event.currentTarget.checked)}
+        />
+        <label htmlFor="consent">Jeg tillater Itera å kontakte meg senere</label>
         <button type="submit" disabled={loading}>
           Register
         </button>

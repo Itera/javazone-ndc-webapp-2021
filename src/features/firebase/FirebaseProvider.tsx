@@ -25,9 +25,6 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
   const [db] = useState(getDatabase(app));
   const [auth] = useState(getAuth(app));
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   async function init() {
     const snapshot = await get(ref(db, '/leaderboard'));
     const data = await snapshot.val();
@@ -45,15 +42,6 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
       }
     }
 
-    onAuthStateChanged(auth, (user) => {
-      if (location.pathname !== '/') {
-        return;
-      } else if (user === null) {
-        navigate(Path.REGISTRATION, { replace: true });
-      } else {
-        navigate(Path.USER, { replace: true });
-      }
-    });
   }
 
   return (

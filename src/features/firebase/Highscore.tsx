@@ -10,7 +10,7 @@ export function Highscore() {
         {leaderboard.map((entry, index) => (
           <tr key={entry.start}>
             <td>{index}.</td>
-            <td>{entry.uid}</td>
+            <td>{entry.username}</td>
             <td>{toTimeString(entry.start, entry.finish)}</td>
           </tr>
         ))}

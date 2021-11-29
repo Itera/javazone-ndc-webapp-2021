@@ -1,19 +1,20 @@
 import { TimeDisplay } from './TimeDisplay';
-import { User } from '../../domain';
+//import { User } from '../../domain';
 import { useState } from 'react';
 import { useTimer } from '../../hooks/useTimer';
 
 interface Props {
-  user: User;
+  //user: User;
+  username: string;
 }
 
 export function Timer(props: Props) {
-  const { user } = props;
+  const { username } = props;
   const { start, stop } = useTimer();
   const [timer, setTimer] = useState<number | null>(null);
 
   function startTimer() {
-    start(user).then((startTime) => {
+    start(username).then((startTime) => {
       setTimer(() => startTime);
     });
   }
