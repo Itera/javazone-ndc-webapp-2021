@@ -1,27 +1,34 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { useLeaderboard } from '../../../hooks/useLeaderboard';
-import { Path } from '../../../routes';
-import { toTimeString } from '../../../utils/toTimeString';
-import { TimeDisplay } from '../../../components/TimeDisplay';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { useLeaderboard } from "../../../hooks/useLeaderboard";
+import { Path } from "../../../routes";
+import { toTimeString } from "../../../utils/toTimeString";
+import { TimeDisplay } from "../../../components/TimeDisplay";
+import { useTimer } from "../../../hooks/useTimer";
 
 export function Ongoing() {
   const navigate = useNavigate();
   const [leaderboard] = useLeaderboard();
+  const { start: startTimer, stop } = useTimer();
   const [start] = useState(Date.now());
 
   const fastest = leaderboard[0];
 
+  useEffect(() => {
+    startTimer("RAG", start);
+  }, []);
+
   function finished() {
     const now = Date.now();
-
-    navigate(Path.FINISH, {
-      replace: true,
-      state: {
-        start: start,
-        finish: now,
-        elapsed: now - start,
-      },
+    stop(now).then((elapsed: number) => {
+      navigate(Path.FINISH, {
+        replace: true,
+        state: {
+          start: start,
+          finish: now,
+          elapsed: elapsed,
+        },
+      });
     });
   }
 
