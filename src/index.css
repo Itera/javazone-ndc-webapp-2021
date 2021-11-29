@@ -237,16 +237,64 @@ tr[data-highlight=true] {
   color: #0029ff;
 }
 
+.inset-dot {
+  padding: 0 0 0 4rem;
+}
+.inset-dot:before {
+  position: absolute;
+  content: "";
+  min-height: 2.875rem;
+  min-width: 2.875rem;
+  margin-left: -4rem;
+  background-color: #0029ff;
+}
+
+form > * + * {
+  margin-top: 2rem;
+}
+
+label {
+  font-size: 1.25rem;
+}
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=tel] {
+  height: 3.75rem;
+  font-size: 1.25rem;
+  padding-left: 0.75rem;
+}
+
+input[type=checkbox] {
+  width: 2.875rem;
+  height: 2.875rem;
+  margin-right: 1rem;
+}
+input[type=checkbox] + label {
+  display: block;
+  padding-left: 3.75rem;
+  margin-top: -3.2rem;
+}
+
 .button {
   display: inline-block;
   color: white;
   background-color: #0029ff;
   padding: 2rem 3rem;
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-decoration: none;
 }
 .button + * {
   margin-top: 3rem;
+}
+
+button {
+  padding: 1.5rem 2.25rem;
+  font-size: 1.75rem;
+  color: white;
+  background-color: #0029ff;
+  border: none;
 }
 
 @font-face {
@@ -393,6 +441,10 @@ tr[data-highlight=true] {
   font-family: "Feeling Passionate";
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "IBM Plex Sans";
   font-weight: 400;
@@ -475,6 +527,25 @@ p {
   line-height: 0.8em;
 }
 
-* {
-  box-sizing: border-box;
+ul {
+  list-style: none;
+  padding-left: 6rem;
+}
+ul li {
+  position: relative;
+  font-size: 3.125rem;
+}
+ul li:before {
+  content: "";
+  position: absolute;
+  min-height: 2.875rem;
+  min-width: 2.875rem;
+  top: 0;
+  left: 0;
+  margin-top: -6px;
+  margin-left: -5.875rem;
+  background-color: #0029ff;
+}
+ul li + li {
+  margin-top: 4.55rem;
 }

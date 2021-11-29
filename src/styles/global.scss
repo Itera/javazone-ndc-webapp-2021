@@ -1,4 +1,8 @@
-@use "./utility/variables" as *;
+@use './utility/variables' as *;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: $font-family-ibm-plex-sans;
@@ -77,6 +81,28 @@ p {
   line-height: 0.8em;
 }
 
-* {
-  box-sizing: border-box;
+ul {
+  list-style: none;
+  padding-left: 6rem;
+
+  li {
+    position: relative;
+    font-size: 3.125rem;
+
+    &:before {
+      content: '';
+      position: absolute;
+      min-height: 2.875rem;
+      min-width: 2.875rem;
+      top: 0;
+      left: 0;
+      margin-top: -6px;
+      margin-left: -5.875rem;
+      background-color: $color-sea;
+    }
+
+    & + li {
+      margin-top: 4.55rem;
+    }
+  }
 }

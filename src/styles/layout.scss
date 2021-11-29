@@ -1,4 +1,4 @@
-@use "./utility/variables" as *;
+@use './utility/variables' as *;
 
 .center {
   text-align: center;
@@ -53,8 +53,52 @@
   position: absolute;
 }
 
-tr[data-highlight="true"] {
+tr[data-highlight='true'] {
   color: $color-sea;
+}
+
+.inset-dot {
+  padding: 0 0 0 4rem;
+
+  &:before {
+    position: absolute;
+    content: '';
+    min-height: 2.875rem;
+    min-width: 2.875rem;
+    margin-left: -4rem;
+    background-color: $color-sea;
+  }
+}
+
+form {
+  & > * + * {
+    margin-top: 2rem;
+  }
+}
+
+label {
+  font-size: 1.25rem;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='tel'] {
+  height: 3.75rem;
+  font-size: 1.25rem;
+  padding-left: 0.75rem;
+}
+
+input[type='checkbox'] {
+  width: 2.875rem;
+  height: 2.875rem;
+  margin-right: 1rem;
+
+  & + label {
+    display: block;
+    padding-left: 3.75rem;
+    margin-top: -3.2rem;
+  }
 }
 
 .button {
@@ -62,10 +106,18 @@ tr[data-highlight="true"] {
   color: $color-white;
   background-color: $color-sea;
   padding: 2rem 3rem;
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-decoration: none;
 
   & + * {
     margin-top: 3rem;
   }
+}
+
+button {
+  padding: 1.5rem 2.25rem;
+  font-size: 1.75rem;
+  color: $color-white;
+  background-color: $color-sea;
+  border: none;
 }
