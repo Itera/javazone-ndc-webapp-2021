@@ -1,4 +1,4 @@
-import { Entry, User } from '../domain';
+import { Entry/* , User */ } from '../domain';
 import { child, get, push, update } from 'firebase/database';
 
 import { useDatabase } from './useDatabase';
@@ -7,11 +7,11 @@ import { Logger } from '../features/logging/logger';
 
 export function useTimer() {
   const [logger] = useState(new Logger('useTimer'));
-  const { daily } = useDatabase();
+  const { daily, unregistered } = useDatabase();
   const [key, setKey] = useState<string | null>(null);
 
-  async function start(user: User) {
-    logger.trace('Starting new timer for user', user.uid);
+  async function start(username: string) {
+    logger.trace('Starting new timer for user', username);
     const generatedKey = push(daily).key;
 
     if (generatedKey === null) {
@@ -23,10 +23,18 @@ export function useTimer() {
 
     await update(daily, {
       [generatedKey]: {
-        uid: user.uid,
+        username,
         start: now,
       },
     });
+
+    await update(unregistered, {
+      [generatedKey]: {
+        uid: generatedKey,
+        username,
+        start: now,
+      },
+    })
 
     setKey(() => generatedKey);
     logger.info(
@@ -63,6 +71,16 @@ export function useTimer() {
     await update(dbRef, {
       ...data,
       elapsed: now - data.start,
+      finish: now,
+    });
+
+    const unregisteredDbRef = child(unregistered, `${key}`);
+    const unregisteredEntry = await get(unregisteredDbRef);
+    const unregisteredData = unregisteredEntry.val() as Entry;
+
+    await update(unregisteredDbRef, {
+      ...unregisteredData,
+      elapsed: now - unregisteredData.start,
       finish: now,
     });
 
