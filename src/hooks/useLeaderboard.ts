@@ -1,41 +1,34 @@
-import { Entry } from '../domain';
-import { onValue } from 'firebase/database';
-import { useDatabase } from './useDatabase';
-import { useMount } from './useMount';
-import { useState } from 'react';
-import { Logger } from '../features/logging/logger';
+import { Entry } from "../domain";
+import { onValue } from "firebase/database";
+import { useDatabase } from "./useDatabase";
+import { useMount } from "./useMount";
+import { useState } from "react";
+import { Logger } from "../features/logging/logger";
 
-export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
-  const [logger] = useState(new Logger('useLeaderboard'));
+export function useLeaderboard(): Array<Entry> {
+  const [logger] = useState(new Logger("useLeaderboard"));
   const { daily } = useDatabase();
-  const [leaderboard, setLeaderboard] = useState<Array<Required<Entry>>>([]);
-  const [ongoing, setOngoing] = useState<Array<Entry>>([]);
+  const [leaderboard, setLeaderboard] = useState<Array<Entry>>([]);
 
   function updateStandings(entries: Array<Entry>) {
-    logger.trace('Updating leaderboard');
-
-    setOngoing(() => {
-      const res = entries.filter((entry) => !entry.hasOwnProperty('finish'));
-      logger.debug('Found', `[ongoing=${res.length}]`, 'ongoing entries');
-      return res;
-    });
+    logger.trace("Updating leaderboard");
 
     const finished = entries.filter((entry) =>
-      entry.hasOwnProperty('finish')
+      entry.hasOwnProperty("finish")
     ) as Array<Required<Entry>>;
 
-    logger.debug('Found', `[finished=${finished.length}]`, 'finished entries');
+    logger.debug("Found", `[finished=${finished.length}]`, "finished entries");
     setLeaderboard(() => finished.sort((a, b) => a.elapsed - b.elapsed));
   }
 
   function attachObserver() {
     logger.trace(
-      'Attaching listener to leaderboard document',
+      "Attaching listener to leaderboard document",
       daily.toString()
     );
     onValue(daily, (snapshot) => {
       if (!snapshot.exists()) {
-        logger.warn('Found no data on', `[src=${daily.toString()}]`);
+        logger.warn("Found no data on", `[src=${daily.toString()}]`);
         return;
       }
 
@@ -49,5 +42,5 @@ export function useLeaderboard(): [Array<Required<Entry>>, Array<Entry>] {
     attachObserver();
   });
 
-  return [leaderboard, ongoing];
+  return leaderboard;
 }

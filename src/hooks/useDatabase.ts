@@ -19,5 +19,6 @@ export function useDatabase() {
       `${DatabasePath.LEADERBOARD}/${today}/${DatabasePath.ENTRY}`
     ),
     users: ref(db, DatabasePath.USERS),
+    unregistered: ref(db, `${DatabasePath.UNREGISTERED}/${today}/${DatabasePath.ENTRY}`),
   };
 }

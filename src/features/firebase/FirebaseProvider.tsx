@@ -1,14 +1,12 @@
-import { Analytics, getAnalytics } from 'firebase/analytics';
-import { Auth, getAuth, onAuthStateChanged } from 'firebase/auth';
-import { Database, get, ref } from 'firebase/database';
-import { FirebaseApp, initializeApp } from 'firebase/app';
-import { PropsWithChildren, createContext, useContext, useState } from 'react';
-import { getDatabase, set } from 'firebase/database';
-import { useLocation, useNavigate } from 'react-router';
+import { Analytics, getAnalytics } from "firebase/analytics";
+import { Auth, getAuth } from "firebase/auth";
+import { Database, get, ref } from "firebase/database";
+import { FirebaseApp, initializeApp } from "firebase/app";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
+import { getDatabase, set } from "firebase/database";
 
-import { Config } from '../config/Config';
-import { Loader } from '../../components/Loader';
-import { Path } from '../../routes';
+import { Config } from "../config/Config";
+import { Loader } from "../../components/Loader";
 
 interface FirebaseContext {
   app: FirebaseApp;
@@ -25,11 +23,8 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
   const [db] = useState(getDatabase(app));
   const [auth] = useState(getAuth(app));
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   async function init() {
-    const snapshot = await get(ref(db, '/leaderboard'));
+    const snapshot = await get(ref(db, "/leaderboard"));
     const data = await snapshot.val();
 
     const date = new Date();
@@ -44,16 +39,6 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
         console.error(err);
       }
     }
-
-    onAuthStateChanged(auth, (user) => {
-      if (location.pathname !== '/') {
-        return;
-      } else if (user === null) {
-        navigate(Path.REGISTRATION, { replace: true });
-      } else {
-        navigate(Path.USER, { replace: true });
-      }
-    });
   }
 
   return (
@@ -74,7 +59,7 @@ export function useFirebase() {
   const context = useContext(firebaseContext);
 
   if (context === null) {
-    throw new Error('Element must be wrapped by a FirebaseProvider');
+    throw new Error("Element must be wrapped by a FirebaseProvider");
   }
 
   return context;

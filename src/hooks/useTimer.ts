@@ -1,79 +1,76 @@
-import { Entry, User } from '../domain';
-import { child, get, push, update } from 'firebase/database';
+import { Entry /* , User */ } from "../domain";
+import { child, get, push, update } from "firebase/database";
 
-import { useDatabase } from './useDatabase';
-import { useState } from 'react';
-import { Logger } from '../features/logging/logger';
+import { useDatabase } from "./useDatabase";
+import { useState } from "react";
+import { Logger } from "../features/logging/logger";
 
 export function useTimer() {
-  const [logger] = useState(new Logger('useTimer'));
-  const { daily } = useDatabase();
+  const [logger] = useState(new Logger("useTimer"));
+  const { daily, unregistered } = useDatabase();
   const [key, setKey] = useState<string | null>(null);
 
-  async function start(user: User) {
-    logger.trace('Starting new timer for user', user.uid);
+  async function start(username: string, startTime: number): Promise<number> {
+    logger.trace("Starting new timer for user", username);
     const generatedKey = push(daily).key;
 
     if (generatedKey === null) {
-      logger.error('Failed to generate new key');
-      throw new Error('Failed to generate new key');
+      logger.error("Failed to generate new key");
+      throw new Error("Failed to generate new key");
     }
 
-    const now = Date.now();
-
-    await update(daily, {
+    await update(unregistered, {
       [generatedKey]: {
-        uid: user.uid,
-        start: now,
+        username,
+        start: startTime,
       },
     });
 
     setKey(() => generatedKey);
     logger.info(
-      'Successfully created new entry',
+      "Successfully created new entry",
       `[key=${generatedKey}]`,
-      `[time=${now}]`
+      `[time=${startTime}]`
     );
-    return now;
+    return startTime;
   }
 
-  async function stop() {
-    logger.trace('Stopping timer for', key);
+  async function stop(stopTime: number): Promise<number> {
+    logger.trace("Stopping timer for", key);
     if (key === null) {
-      logger.error('Stop was invoked without any ongoing runs', `[key=${key}]`);
-      throw new Error('Stop was invoked without any ongoing runs');
+      logger.error("Stop was invoked without any ongoing runs", `[key=${key}]`);
+      throw new Error("Stop was invoked without any ongoing runs");
     }
 
-    const now = Date.now();
-    const dbRef = child(daily, `${key}`);
-    const entry = await get(dbRef);
+    const ref = child(unregistered, `${key}`);
+    const entry = await get(ref);
 
     if (!entry.exists()) {
       logger.error(
-        'Unable to find time entry',
+        "Unable to find time entry",
         `[key=${key}]`,
-        `[src=${dbRef.toString()}]`
+        `[src=${ref.toString()}]`
       );
       setKey(() => null);
-      throw new Error('Unable to find time entry');
+      throw new Error("Unable to find time entry");
     }
 
     const data = entry.val() as Entry;
 
-    await update(dbRef, {
+    await update(ref, {
       ...data,
-      elapsed: now - data.start,
-      finish: now,
+      elapsed: stopTime - data.start,
+      finish: stopTime,
     });
 
     setKey(() => null);
     logger.info(
-      'Successfully stopped time for entry',
+      "Successfully stopped time for entry",
       `[key=${key}]`,
-      `[finish=${now}]`,
-      `[elapsed=${now - data.start}]`
+      `[finish=${stopTime}]`,
+      `[elapsed=${stopTime - data.start}]`
     );
-    return now - data.start;
+    return stopTime - data.start;
   }
 
   return {

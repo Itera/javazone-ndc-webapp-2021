@@ -1,19 +1,12 @@
-import { Link } from 'react-router-dom';
-import { Path } from '../routes';
-import { Timer } from '../features/timer/Timer';
-import { useUser } from '../hooks/useUser';
+import { Link } from "react-router-dom";
+import { Path } from "../routes";
 
 export function Profile() {
-  const user = useUser();
-
-  if (user === null) {
-    return <Link to={Path.REGISTRATION} replace />;
-  }
-
   return (
     <>
-      <h1>Hello there {user.username}</h1>
-      <Timer user={user} />
+      <h1>Your score is registered!</h1>
+      <p>We will contact the winner after the conference.</p>
+      <Link to={Path.UNREGISTERED}>Back to the list</Link>
     </>
   );
 }

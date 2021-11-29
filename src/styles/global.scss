@@ -1,0 +1,82 @@
+@use "./utility/variables" as *;
+
+body {
+  font-family: $font-family-ibm-plex-sans;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: $color-midnight;
+  background-color: $color-ivory;
+  margin: 0;
+}
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+h1 {
+  font-family: $font-family-neue-machina;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 45px;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 70px;
+    line-height: 70px;
+  }
+}
+h2 {
+  font-weight: 300;
+  font-size: 27px;
+  line-height: 36px;
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 32px;
+    line-height: 45px;
+  }
+}
+h3 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+}
+@media (min-width: 768px) {
+  h3 {
+    font-size: 27px;
+    line-height: 36px;
+  }
+}
+h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+@media (min-width: 768px) {
+  h4 {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+h5 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+@media (min-width: 768px) {
+  h5 {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+p {
+  line-height: 0.8em;
+}
+
+* {
+  box-sizing: border-box;
+}
