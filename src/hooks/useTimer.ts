@@ -19,16 +19,8 @@ export function useTimer() {
       throw new Error("Failed to generate new key");
     }
 
-    await update(daily, {
-      [generatedKey]: {
-        username,
-        start: startTime,
-      },
-    });
-
     await update(unregistered, {
       [generatedKey]: {
-        uid: generatedKey,
         username,
         start: startTime,
       },
@@ -50,14 +42,14 @@ export function useTimer() {
       throw new Error("Stop was invoked without any ongoing runs");
     }
 
-    const dbRef = child(daily, `${key}`);
-    const entry = await get(dbRef);
+    const ref = child(unregistered, `${key}`);
+    const entry = await get(ref);
 
     if (!entry.exists()) {
       logger.error(
         "Unable to find time entry",
         `[key=${key}]`,
-        `[src=${dbRef.toString()}]`
+        `[src=${ref.toString()}]`
       );
       setKey(() => null);
       throw new Error("Unable to find time entry");
@@ -65,19 +57,9 @@ export function useTimer() {
 
     const data = entry.val() as Entry;
 
-    await update(dbRef, {
+    await update(ref, {
       ...data,
       elapsed: stopTime - data.start,
-      finish: stopTime,
-    });
-
-    const unregisteredDbRef = child(unregistered, `${key}`);
-    const unregisteredEntry = await get(unregisteredDbRef);
-    const unregisteredData = unregisteredEntry.val() as Entry;
-
-    await update(unregisteredDbRef, {
-      ...unregisteredData,
-      elapsed: stopTime - unregisteredData.start,
       finish: stopTime,
     });
 
