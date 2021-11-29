@@ -15,10 +15,9 @@ export function Highscore(props: Props): JSX.Element {
   const leaderboard = useLeaderboard();
 
   const withRecentRun: Array<HighlightedEntry> = [
-    ...leaderboard,
+    ...leaderboard.filter((value) => value.start !== entry.start),
     { ...entry, highlight: true },
   ].sort((a, b) => a.elapsed - b.elapsed);
-
   const fastest = withRecentRun[0];
 
   return (

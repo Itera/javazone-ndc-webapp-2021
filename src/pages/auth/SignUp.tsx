@@ -8,6 +8,8 @@ import { useAuth } from "../../hooks/useAuth";
 import { useFirebase } from "../../features/firebase/FirebaseProvider";
 import { useLocation, useNavigate } from "react-router";
 import { UnregisteredEntry } from "../../hooks/useUnregistered";
+import { useDatabase } from "../../hooks/useDatabase";
+import { push } from "@firebase/database";
 
 export function SignUp() {
   const navigate = useNavigate();
@@ -16,16 +18,25 @@ export function SignUp() {
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
   const location = useLocation();
-  const { uid, username } = location.state as UnregisteredEntry;
+  const { uid, username, start, finish, elapsed } =
+    location.state as UnregisteredEntry;
 
   const { addUser } = useAuth();
+  const { daily } = useDatabase();
   const { callback, loading, error } = useAsync(addUser);
 
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    callback(name, phone, email, consent, uid, username).then(() =>
-      navigate(Path.USER, { replace: true })
-    );
+    callback(name, phone, email, consent, uid, username).then(() => {
+      push(daily, {
+        username,
+        start,
+        finish,
+        elapsed,
+      }).then(() => {
+        navigate(Path.USER, { replace: true });
+      });
+    });
   }
 
   return (

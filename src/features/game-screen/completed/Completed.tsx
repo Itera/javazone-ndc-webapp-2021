@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import { Entry } from "../../../domain";
+import { Path } from "../../../routes";
 import { toTimeString } from "../../../utils/toTimeString";
 import { Highscore } from "./Highscore";
 
@@ -30,6 +32,9 @@ export function Completed() {
         transition={{ duration: 2, delay: 3 }}
       >
         <Highscore entry={run} />
+        <Link to={Path.EXPLANATION} replace>
+          Next Player
+        </Link>
       </motion.section>
     </div>
   );
