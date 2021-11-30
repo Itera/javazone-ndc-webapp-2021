@@ -21,7 +21,12 @@ export function Explanation(props: Props) {
       <Link
         to={Path.COUNTDOWN}
         className="button row center-content"
-        style={{ display: "inline-flex", fontSize: "5rem" }}
+        style={{
+          display: "inline-flex",
+          fontSize: "5rem",
+          pointerEvents: props.username.length === 0 ? "none" : undefined,
+          backgroundColor: props.username.length === 0 ? "#B8BAC6" : undefined,
+        }}
         state={props.username}
         replace
       >
