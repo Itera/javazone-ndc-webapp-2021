@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Arrow } from "../../../components/Arrow";
 import { Path } from "../../../routes";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 export function Explanation(props: Props) {
   return (
-    <div style={{ padding: "4rem 2rem", margin: "auto 0" }}>
+    <div style={{ padding: "0 0 4rem 0", margin: "auto 0" }}>
       <h1 style={{ fontSize: 94 }}>Build Itera with us!</h1>
       <p style={{ fontSize: 55, lineHeight: 2 }}>
         Use the cubes on the ground to build the image that pops up on this
@@ -19,11 +20,15 @@ export function Explanation(props: Props) {
 
       <Link
         to={Path.COUNTDOWN}
-        className="button"
+        className="button row center-content"
+        style={{ display: "inline-flex", fontSize: "5rem" }}
         state={props.username}
         replace
       >
-        → Start Game
+        <Arrow />
+        <span style={{ display: "inline-block", marginTop: "-3px" }}>
+          Start Game
+        </span>
       </Link>
     </div>
   );

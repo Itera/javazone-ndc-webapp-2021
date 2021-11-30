@@ -1,12 +1,12 @@
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation, useNavigate } from "react-router";
 
-import { Path } from '../../../routes';
-import { TimeDisplay } from '../../../components/TimeDisplay';
-import { toTimeString } from '../../../utils/toTimeString';
-import { useLeaderboard } from '../../../hooks/useLeaderboard';
-import { useMount } from '../../../hooks/useMount';
-import { useState } from 'react';
-import { useTimer } from '../../../hooks/useTimer';
+import { Path } from "../../../routes";
+import { TimeDisplay } from "../../../components/TimeDisplay";
+import { toTimeString } from "../../../utils/toTimeString";
+import { useLeaderboard } from "../../../hooks/useLeaderboard";
+import { useMount } from "../../../hooks/useMount";
+import { useState } from "react";
+import { useTimer } from "../../../hooks/useTimer";
 
 export function Ongoing() {
   const location = useLocation();
@@ -40,20 +40,17 @@ export function Ongoing() {
   }
 
   return (
-    <div className="row">
-      <div className="fill-vh" style={{ flexGrow: 6 }}></div>
-      <div
-        className="column center-content space-around bg-ivory fill-vh"
-        style={{ flexGrow: 1 }}
-      >
-        <section className="center font-family-neue-machina">
-          <h2>Highscore</h2>
-          {fastest && <p>{toTimeString(fastest.start, fastest.finish)}</p>}
-          {!fastest && <p>Pending...</p>}
-        </section>
-        <TimeDisplay start={start} column />
-        <button onClick={finished}>Done</button>
-      </div>
+    <div
+      className="column center-content space-around bg-ivory fill-vh"
+      style={{ flexGrow: 1, minWidth: 480 }}
+    >
+      <section className="center font-family-neue-machina">
+        <h2>Highscore</h2>
+        {fastest && <p>{toTimeString(fastest.start, fastest.finish)}</p>}
+        {!fastest && <p>Pending...</p>}
+      </section>
+      <TimeDisplay start={start} column />
+      <button onClick={finished}>Done</button>
     </div>
   );
 }
