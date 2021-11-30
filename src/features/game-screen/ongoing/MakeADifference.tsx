@@ -4,8 +4,8 @@ export function MakeADifference() {
       <h1
         className="font-family-feeling-passionate"
         style={{
-          fontSize: "25rem",
-          lineHeight: "25rem",
+          fontSize: "15rem",
+          lineHeight: "20rem",
           textAlign: "center",
         }}
       >

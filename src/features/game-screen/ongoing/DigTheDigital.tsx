@@ -3,8 +3,8 @@ export function DigTheDigital() {
     <div className="fill-space bg-jade_grid center-content">
       <h1
         style={{
-          fontSize: "25rem",
-          lineHeight: "25rem",
+          fontSize: "18rem",
+          lineHeight: "20rem",
           fontWeight: 700,
           textAlign: "center",
         }}

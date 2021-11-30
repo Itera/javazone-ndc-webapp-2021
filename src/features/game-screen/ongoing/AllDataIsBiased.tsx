@@ -3,8 +3,8 @@ export function AllDataIsBiased() {
     <div className="fill-space bg-sea_grid center-content">
       <h1
         style={{
-          fontSize: "25rem",
-          lineHeight: "25rem",
+          fontSize: "15rem",
+          lineHeight: "15rem",
           fontWeight: 700,
           textAlign: "center",
         }}

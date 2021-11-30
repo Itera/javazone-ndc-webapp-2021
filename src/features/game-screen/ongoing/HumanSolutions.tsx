@@ -3,8 +3,8 @@ export function HumanSolutions() {
     <div className="fill-space bg-lobster_grid center-content">
       <h1
         style={{
-          fontSize: "15rem",
-          lineHeight: "15rem",
+          fontSize: "8rem",
+          lineHeight: "10rem",
           fontWeight: 700,
           textAlign: "center",
         }}
