@@ -126,3 +126,31 @@ table {
     }
   }
 }
+
+.react-simple-keyboard {
+  overflow: visible;
+
+  .hg-button {
+    background-color: #d2e0f9;
+    border-radius: 0;
+    max-width: 40px;
+    max-height: 40px;
+  }
+
+  .hg-rows {
+    overflow: visible;
+  }
+
+  .hg-row:nth-child(2) {
+    margin-left: 1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .hg-row:nth-child(3) > .hg-button:last-child {
+    max-width: 80px;
+  }
+
+  .hg-row:nth-child(3) {
+    justify-content: flex-end;
+  }
+}

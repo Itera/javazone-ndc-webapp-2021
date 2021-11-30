@@ -634,3 +634,26 @@ table tbody tr > td:last-of-type {
   width: 100%;
   text-align: right;
 }
+
+.react-simple-keyboard {
+  overflow: visible;
+}
+.react-simple-keyboard .hg-button {
+  background-color: #d2e0f9;
+  border-radius: 0;
+  max-width: 40px;
+  max-height: 40px;
+}
+.react-simple-keyboard .hg-rows {
+  overflow: visible;
+}
+.react-simple-keyboard .hg-row:nth-child(2) {
+  margin-left: 1.5rem;
+  margin-right: -1.5rem;
+}
+.react-simple-keyboard .hg-row:nth-child(3) > .hg-button:last-child {
+  max-width: 80px;
+}
+.react-simple-keyboard .hg-row:nth-child(3) {
+  justify-content: flex-end;
+}
