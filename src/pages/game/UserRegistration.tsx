@@ -8,10 +8,7 @@ export function UserRegistration() {
   const [username, setUsername] = useState("");
 
   return (
-    <div
-      className="row fill-screen equal-width"
-      style={{ padding: "4rem 8rem" }}
-    >
+    <div className="row fill-screen" style={{ padding: "4rem 8rem" }}>
       <Explanation username={username} />
       <UserNickname
         username={username}
