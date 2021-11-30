@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { Count } from "./Count";
 
-const DURATION = 0.5;
+const DURATION = 0.25;
 const DELAY = 1;
 
 export function Countdown() {

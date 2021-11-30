@@ -1,4 +1,4 @@
-@use './utility/variables' as *;
+@use "./utility/variables" as *;
 
 * {
   box-sizing: border-box;
@@ -13,6 +13,7 @@ body {
   color: $color-midnight;
   background-color: $color-ivory;
   margin: 0;
+  overflow: hidden;
 }
 @media (max-width: 767px) {
   body {
@@ -90,7 +91,7 @@ ul {
     font-size: 3.125rem;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       min-height: 2.875rem;
       min-width: 2.875rem;

@@ -501,6 +501,7 @@ body {
   color: black;
   background-color: #eeede4;
   margin: 0;
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
