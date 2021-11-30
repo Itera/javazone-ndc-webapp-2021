@@ -1,5 +1,5 @@
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { FirebaseProvider } from "./features/firebase/FirebaseProvider";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -10,11 +10,11 @@ import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <FirebaseProvider>
         <App />
       </FirebaseProvider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
