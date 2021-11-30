@@ -1,15 +1,15 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from "react";
 
-import { FirebaseError } from '@firebase/util';
-import { Path } from '../../routes';
-import { useAsync } from '../../hooks/useAsync';
-import { useAuth } from '../../hooks/useAuth';
-import { useNavigate } from 'react-router';
+import { FirebaseError } from "@firebase/util";
+import { Path } from "../../routes";
+import { useAsync } from "../../hooks/useAsync";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 export function SignIn() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { signIn } = useAuth();
   const { callback, loading, error, result } = useAsync(signIn);
@@ -21,7 +21,7 @@ export function SignIn() {
 
   useEffect(() => {
     if (result !== null) {
-      navigate(Path.USER, { replace: true });
+      navigate(Path.VIDEOSHOW, { replace: true });
     }
   }, [navigate, result]);
 

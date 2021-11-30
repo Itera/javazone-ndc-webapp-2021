@@ -5,7 +5,7 @@ export function Home() {
   return (
     <>
       <h1>Navigation links</h1>
-      <Link to={Path.EXPLANATION}>Game</Link>
+      <Link to={Path.VIDEOSHOW}>Game</Link>
       <Link to={Path.UNREGISTERED}>Registration</Link>
       <Link to={Path.LOGIN}>Sign In</Link>
     </>

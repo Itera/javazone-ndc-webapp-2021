@@ -8,20 +8,24 @@ interface Props {
 
 export function Explanation(props: Props) {
   return (
-    <div style={{ padding: "0 0 4rem 0", margin: "auto 0" }}>
-      <h1 style={{ fontSize: 94 }}>Build Itera with us!</h1>
-      <p style={{ fontSize: 55, lineHeight: 2 }}>
+    <div style={{ padding: "0 0 4rem 0", width: "60vw" }}>
+      <p style={{ fontSize: 45, lineHeight: 2 }}>
         Use the cubes on the ground to build the image that pops up on this
         screen.
       </p>
-      <p style={{ fontSize: 55, lineHeight: 2 }}>
+      <p style={{ fontSize: 45, lineHeight: 2 }}>
         Touch "DONE" when you are finished to stop the timer
       </p>
 
       <Link
         to={Path.COUNTDOWN}
         className="button row center-content"
-        style={{ display: "inline-flex", fontSize: "5rem" }}
+        style={{
+          display: "inline-flex",
+          fontSize: "5rem",
+          pointerEvents: props.username.length !== 3 ? "none" : undefined,
+          backgroundColor: props.username.length !== 3 ? "#B8BAC6" : undefined,
+        }}
         state={props.username}
         replace
       >

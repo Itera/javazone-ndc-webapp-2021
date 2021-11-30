@@ -14,7 +14,14 @@ export function UserNickname(props: Props) {
   const { username, onChange } = props;
 
   return (
-    <div className="column center-content" style={{ padding: "0 0 0 2rem" }}>
+    <div
+      className="column center-content"
+      style={{
+        padding: "0 0 0 2rem",
+        width: "40vw",
+        justifyContent: "flex-start",
+      }}
+    >
       <h2 style={{ fontSize: "3rem", marginBottom: "2rem" }}>Your nickname:</h2>
       <div className="row" style={{ marginBottom: "8rem" }}>
         <Cube src={cubeOne} letter={username.slice(0, 1)} />

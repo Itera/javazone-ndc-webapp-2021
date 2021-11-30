@@ -4,8 +4,8 @@ export function PeoplePassionPurpose() {
       <h1
         className="font-family-ibm-plex-sans"
         style={{
-          fontSize: "20rem",
-          lineHeight: "20rem",
+          fontSize: "15rem",
+          lineHeight: "15rem",
           fontWeight: 700,
           textAlign: "left",
         }}

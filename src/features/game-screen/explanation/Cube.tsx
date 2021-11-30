@@ -10,8 +10,8 @@ export function Cube(props: Props) {
         src={props.src}
         alt=""
         style={{
-          height: 300,
-          width: 300,
+          height: 175,
+          width: 175,
         }}
       />
       <span
@@ -20,10 +20,10 @@ export function Cube(props: Props) {
           alignItems: "center",
           justifyContent: "center",
           lineHeight: "0.25rem",
-          fontSize: "15rem",
-          marginTop: "-9rem",
+          fontSize: "5rem",
+          marginTop: "-4.5rem",
           marginBottom: "4rem",
-          marginLeft: "-3.25rem",
+          marginLeft: "-2.25rem",
           zIndex: 2,
         }}
       >

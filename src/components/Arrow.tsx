@@ -1,10 +1,15 @@
 import { ReactComponent } from "../statics/svgs/Arrow.svg";
 
-export function Arrow() {
+interface Props {
+  readonly color?: string;
+}
+
+export function Arrow(props: Props) {
+  const { color = "#fff" } = props;
   return (
     <ReactComponent
-      stroke="#fff"
-      fill="#fff"
+      stroke={color}
+      fill={color}
       width="80px"
       style={{ marginRight: "2rem" }}
     />

@@ -18,8 +18,6 @@ export function Ongoing() {
   const fastest = leaderboard[0];
   const username = location.state.username;
 
-  console.log(username);
-
   useMount(() => {
     startTimer(username, start);
   });
@@ -42,7 +40,11 @@ export function Ongoing() {
   return (
     <div
       className="column center-content bg-ivory fill-vh"
-      style={{ flexGrow: 1, minWidth: 480, justifyContent: "space-between" }}
+      style={{
+        width: "25vw",
+        minWidth: 480,
+        justifyContent: "space-between",
+      }}
     >
       <section
         className="center font-family-neue-machina"

@@ -9,12 +9,14 @@ import { SignIn } from '../pages/auth/SignIn';
 import { SignUp } from '../pages/auth/SignUp';
 import { Unregistered } from '../features/firebase/Unregistered';
 import { UserRegistration } from '../pages/game/UserRegistration';
+import { VideoShow } from '../pages/game/VideoShow';
 
 export enum Path {
   HOME = '/',
   USER = '/profile',
   UNREGISTERED = '/unregistered',
 
+  VIDEOSHOW = '/game/videoshow',
   EXPLANATION = '/game/explanation',
   COUNTDOWN = '/game/countdown',
   GAME = '/game/timer',
@@ -31,6 +33,7 @@ export function Router() {
       <Route path={Path.USER} element={<Profile />} />
       <Route path={Path.UNREGISTERED} element={<Unregistered />} />
 
+      <Route path={Path.VIDEOSHOW} element={<VideoShow />} />
       <Route path={Path.EXPLANATION} element={<UserRegistration />} />
       <Route path={Path.COUNTDOWN} element={<Countdown />} />
       <Route path={Path.GAME} element={<Game />} />
