@@ -18,8 +18,6 @@ export function Ongoing() {
   const fastest = leaderboard[0];
   const username = location.state.username;
 
-  console.log(username);
-
   useMount(() => {
     startTimer(username, start);
   });

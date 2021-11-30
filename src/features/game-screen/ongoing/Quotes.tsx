@@ -7,6 +7,10 @@ import { ScrumIsYum } from "./ScrumIsYum";
 import { Fragment, useState } from "react";
 import { useMount } from "../../../hooks/useMount";
 
+function getRandomInt(max: number): number {
+  return Math.floor(Math.random() * max);
+}
+
 export function Quotes() {
   const [current, setCurrent] = useState(0);
 
@@ -20,13 +24,7 @@ export function Quotes() {
   ];
 
   useMount(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1 === quotes.length ? 0 : prev + 1));
-    }, 5000);
-
-    return () => {
-      clearInterval(timer);
-    };
+    setCurrent(() => getRandomInt(quotes.length - 1));
   });
 
   return (
