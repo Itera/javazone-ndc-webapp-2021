@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Logo } from "../components/Logo";
 import { Path } from "../routes";
 
+import PriceImage from "../statics/images/Sonos.png";
+
 export function Profile() {
   return (
     <div style={{ padding: "2rem 3rem" }}>
@@ -23,6 +25,7 @@ export function Profile() {
       >
         We will contact the winner after the conference.
       </p>
+      <img src={PriceImage} style={{ maxWidth: "100%" }} />
       <Link to={Path.UNREGISTERED} className="button">
         Back to the list
       </Link>
