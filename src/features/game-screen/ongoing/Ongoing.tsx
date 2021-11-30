@@ -41,16 +41,30 @@ export function Ongoing() {
 
   return (
     <div
-      className="column center-content space-around bg-ivory fill-vh"
-      style={{ flexGrow: 1, minWidth: 480 }}
+      className="column center-content bg-ivory fill-vh"
+      style={{ flexGrow: 1, minWidth: 480, justifyContent: "space-between" }}
     >
-      <section className="center font-family-neue-machina">
-        <h2>Highscore</h2>
-        {fastest && <p>{toTimeString(fastest.start, fastest.finish)}</p>}
+      <section
+        className="center font-family-neue-machina"
+        style={{ color: "#606060", marginTop: "4rem" }}
+      >
+        <h2 style={{ fontSize: "3rem", marginTop: 0, marginBottom: "1rem" }}>
+          Highscore
+        </h2>
+        {fastest && (
+          <p style={{ fontSize: "4.5rem", marginTop: "0rem" }}>
+            {toTimeString(fastest.start, fastest.finish)}
+          </p>
+        )}
         {!fastest && <p>Pending...</p>}
       </section>
       <TimeDisplay start={start} column />
-      <button onClick={finished}>Done</button>
+      <button
+        onClick={finished}
+        style={{ fontSize: "5rem", marginBottom: "4rem" }}
+      >
+        Done
+      </button>
     </div>
   );
 }

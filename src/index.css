@@ -182,6 +182,48 @@
   background-color: #e1f6e0;
 }
 
+.bg-fuschia_grid {
+  background: #b32bff;
+  background-image: linear-gradient(#9d07ef 1rem, transparent 0.1em), linear-gradient(90deg, #9d07ef 1rem, transparent 0.1em);
+  background-size: 33.8rem 29.85rem;
+  color: white;
+}
+
+.bg-sea_grid {
+  background: #0029ff;
+  background-image: linear-gradient(#0024de 1rem, transparent 0.1em), linear-gradient(90deg, #0024de 1rem, transparent 0.1em);
+  background-size: 33.8rem 29.85rem;
+  color: #37e17b;
+}
+
+.bg-gold_grid {
+  background: #ffdd00;
+  background-image: linear-gradient(#ffc700 1rem, transparent 0.1em), linear-gradient(90deg, #ffc700 1rem, transparent 0.1em);
+  background-size: 33.8rem 29.85rem;
+  color: #ff4b33;
+}
+
+.bg-jade_grid {
+  background: #76edd1;
+  background-image: linear-gradient(#5eceb3 1rem, transparent 0.1em), linear-gradient(90deg, #5eceb3 1rem, transparent 0.1em);
+  background-size: 33.8rem 29.85rem;
+  color: #0029ff;
+}
+
+.bg-lobster_grid {
+  background: #ff4b33;
+  background-image: linear-gradient(#f33c23 1rem, transparent 0.1em), linear-gradient(90deg, #f33c23 1rem, transparent 0.1em);
+  background-size: 33.8rem 29.85rem;
+  color: white;
+}
+
+.bg-ivory_grid {
+  background: #eeede4;
+  background-image: linear-gradient(#e0dfd3 1rem, transparent 0.1em), linear-gradient(90deg, #e0dfd3 1rem, transparent 0.1em);
+  background-size: 33.8rem 29.85rem;
+  color: #ff4b33;
+}
+
 .center {
   text-align: center;
 }
@@ -227,6 +269,11 @@
 
 .fill-vw {
   width: 100vw;
+}
+
+.fill-space {
+  width: 100%;
+  height: 100%;
 }
 
 .absolute {
