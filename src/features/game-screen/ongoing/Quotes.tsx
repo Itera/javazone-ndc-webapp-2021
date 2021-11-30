@@ -30,7 +30,7 @@ export function Quotes() {
   });
 
   return (
-    <div style={{ flexGrow: 6 }}>
+    <div style={{ maxWidth: "75vw", width: "100%" }}>
       {quotes
         .filter((_, index) => index === current)
         .map((quote, index) => (
