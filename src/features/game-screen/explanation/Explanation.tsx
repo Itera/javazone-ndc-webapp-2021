@@ -8,8 +8,7 @@ interface Props {
 
 export function Explanation(props: Props) {
   return (
-    <div style={{ padding: "0 0 4rem 0", margin: "auto 0", width: "65vw" }}>
-      <h1 style={{ fontSize: 94 }}>Build Itera with us!</h1>
+    <div style={{ padding: "0 0 4rem 0", width: "60vw" }}>
       <p style={{ fontSize: 45, lineHeight: 2 }}>
         Use the cubes on the ground to build the image that pops up on this
         screen.
@@ -24,8 +23,8 @@ export function Explanation(props: Props) {
         style={{
           display: "inline-flex",
           fontSize: "5rem",
-          pointerEvents: props.username.length === 0 ? "none" : undefined,
-          backgroundColor: props.username.length === 0 ? "#B8BAC6" : undefined,
+          pointerEvents: props.username.length !== 3 ? "none" : undefined,
+          backgroundColor: props.username.length !== 3 ? "#B8BAC6" : undefined,
         }}
         state={props.username}
         replace

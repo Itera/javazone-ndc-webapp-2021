@@ -16,7 +16,11 @@ export function UserNickname(props: Props) {
   return (
     <div
       className="column center-content"
-      style={{ padding: "0 0 0 2rem", width: "35vw" }}
+      style={{
+        padding: "0 0 0 2rem",
+        width: "40vw",
+        justifyContent: "flex-start",
+      }}
     >
       <h2 style={{ fontSize: "3rem", marginBottom: "2rem" }}>Your nickname:</h2>
       <div className="row" style={{ marginBottom: "8rem" }}>
