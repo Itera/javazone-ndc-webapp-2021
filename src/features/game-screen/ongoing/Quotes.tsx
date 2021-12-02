@@ -24,7 +24,7 @@ export function Quotes() {
   ];
 
   useMount(() => {
-    setCurrent(() => getRandomInt(quotes.length - 1));
+    setCurrent(() => getRandomInt(quotes.length));
   });
 
   return (
