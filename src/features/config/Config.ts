@@ -20,15 +20,15 @@ export class Config {
       logging: 'trace',
     },
     firebase: {
-      apiKey: 'AIzaSyDGMJscARK_Wkq2CGhy7wgu0BOd-51VXwo',
-      appId: '1:1015382247649:web:21b4626b518b85223d8fa0',
-      authDomain: 'javazone-and-ndc-2021.firebaseapp.com',
+      apiKey: 'AIzaSyASmJGnEn4LywAV8-MRdaMdeDg1wIqbgJM',
+      appId: '1:279313907388:web:77b1897c52b99c8657dab9',
+      authDomain: 'ndc-javazone-2021-mock.firebaseapp.com',
       databaseURL:
-        'https://javazone-and-ndc-2021-default-rtdb.europe-west1.firebasedatabase.app',
+        'https://ndc-javazone-2021-mock-default-rtdb.europe-west1.firebasedatabase.app',
       measurementId: 'G-Q4GS8NXN28',
-      messagingSenderId: '1015382247649',
-      projectId: 'javazone-and-ndc-2021',
-      storageBucket: 'javazone-and-ndc-2021.appspot.com',
+      messagingSenderId: '279313907388',
+      projectId: 'ndc-javazone-2021-mock',
+      storageBucket: 'ndc-javazone-2021-mock.appspot.com',
     },
   };
 
