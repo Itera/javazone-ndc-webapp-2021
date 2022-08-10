@@ -7,7 +7,6 @@ interface IConfig {
     appId: string;
     authDomain: string;
     databaseURL: string;
-    measurementId: string;
     messagingSenderId: string;
     projectId: string;
     storageBucket: string;
@@ -20,15 +19,14 @@ export class Config {
       logging: 'trace',
     },
     firebase: {
-      apiKey: 'AIzaSyASmJGnEn4LywAV8-MRdaMdeDg1wIqbgJM',
-      appId: '1:279313907388:web:77b1897c52b99c8657dab9',
-      authDomain: 'ndc-javazone-2021-mock.firebaseapp.com',
+      apiKey: 'AIzaSyDBto0BE3fNXOqVNxtO7xHACU5cxoenLuo',
+      appId: '1:249583921695:web:60d843d7901462c6c0c32a',
+      authDomain: 'javazone-ndc-2022.firebaseapp.com',
       databaseURL:
-        'https://ndc-javazone-2021-mock-default-rtdb.europe-west1.firebasedatabase.app',
-      measurementId: 'G-Q4GS8NXN28',
-      messagingSenderId: '279313907388',
-      projectId: 'ndc-javazone-2021-mock',
-      storageBucket: 'ndc-javazone-2021-mock.appspot.com',
+        'https://javazone-ndc-2022-default-rtdb.europe-west1.firebasedatabase.app/',
+      messagingSenderId: '249583921695',
+      projectId: 'javazone-ndc-2022',
+      storageBucket: 'javazone-ndc-2022.appspot.com',
     },
   };
 
