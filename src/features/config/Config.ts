@@ -2,7 +2,7 @@ interface IConfig {
   features: {
     logging: 'trace' | 'debug' | 'info' | 'warn' | 'error';
   };
-  firebase: {
+  firebase: Partial<{
     apiKey: string;
     appId: string;
     authDomain: string;
@@ -10,7 +10,7 @@ interface IConfig {
     messagingSenderId: string;
     projectId: string;
     storageBucket: string;
-  };
+  }>;
 }
 
 export class Config {
@@ -19,14 +19,13 @@ export class Config {
       logging: 'trace',
     },
     firebase: {
-      apiKey: 'AIzaSyDBto0BE3fNXOqVNxtO7xHACU5cxoenLuo',
-      appId: '1:249583921695:web:60d843d7901462c6c0c32a',
-      authDomain: 'javazone-ndc-2022.firebaseapp.com',
-      databaseURL:
-        'https://javazone-ndc-2022-default-rtdb.europe-west1.firebasedatabase.app/',
-      messagingSenderId: '249583921695',
-      projectId: 'javazone-ndc-2022',
-      storageBucket: 'javazone-ndc-2022.appspot.com',
+      apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+      appId: process.env.REACT_APP_FIREBASE_APP_ID,
+      authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+      messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+      projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
     },
   };
 
