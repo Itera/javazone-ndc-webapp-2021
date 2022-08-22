@@ -12,6 +12,7 @@ import { UserRegistration } from '../pages/game/UserRegistration';
 import { VideoShow } from '../pages/game/VideoShow';
 import { useEffect } from 'react';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
+import { useMount } from '../hooks/useMount';
 
 export enum Path {
   HOME = '/',
@@ -28,22 +29,18 @@ export enum Path {
   LOGIN = '/auth/sign-in',
 }
 
-function AuthenticationBlocker() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { auth } = useFirebase();
-
-  useEffect(() => {
-    const isAuthenticated = auth.currentUser !== null;
-    if (location.pathname !== Path.LOGIN && !isAuthenticated) {
-      navigate(Path.LOGIN);
-    }
-  }, [location.pathname, auth, navigate]);
-
-  return null;
-}
-
 export function Router() {
+  const { auth } = useFirebase();
+  const navigate = useNavigate();
+
+  useMount(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user === null) {
+        navigate(Path.LOGIN);
+      }
+    });
+  });
+
   return (
     <>
       <Routes>
@@ -60,7 +57,6 @@ export function Router() {
         <Route path={Path.REGISTRATION} element={<SignUp />} />
         <Route path={Path.LOGIN} element={<SignIn />} />
       </Routes>
-      <AuthenticationBlocker />
     </>
   );
 }

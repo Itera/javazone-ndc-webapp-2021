@@ -1,12 +1,12 @@
-import App from "./App";
-import { HashRouter } from "react-router-dom";
-import { FirebaseProvider } from "./features/firebase/FirebaseProvider";
-import React from "react";
-import ReactDOM from "react-dom";
-import reportWebVitals from "./reportWebVitals";
+import 'normalize.css';
+import './index.css';
 
-import "normalize.css";
-import "./index.css";
+import App from './App';
+import { FirebaseProvider } from './features/firebase/FirebaseProvider';
+import { HashRouter } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +16,7 @@ ReactDOM.render(
       </FirebaseProvider>
     </HashRouter>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

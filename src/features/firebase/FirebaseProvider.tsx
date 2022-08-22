@@ -1,12 +1,12 @@
-import { Analytics, getAnalytics } from "firebase/analytics";
-import { Auth, getAuth } from "firebase/auth";
-import { Database, get, ref } from "firebase/database";
-import { FirebaseApp, initializeApp } from "firebase/app";
-import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { getDatabase, set } from "firebase/database";
+import { Analytics, getAnalytics } from 'firebase/analytics';
+import { Auth, getAuth } from 'firebase/auth';
+import { Database, get, ref } from 'firebase/database';
+import { FirebaseApp, initializeApp } from 'firebase/app';
+import { PropsWithChildren, createContext, useContext, useState } from 'react';
+import { getDatabase, set } from 'firebase/database';
 
-import { Config } from "../config/Config";
-import { Loader } from "../../components/Loader";
+import { Config } from '../config/Config';
+import { useMount } from '../../hooks/useMount';
 
 interface FirebaseContext {
   app: FirebaseApp;
@@ -24,7 +24,11 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
   const [auth] = useState(getAuth(app));
 
   async function init() {
-    const snapshot = await get(ref(db, "/leaderboard"));
+    if (auth.currentUser === null) {
+      return;
+    }
+
+    const snapshot = await get(ref(db, '/leaderboard'));
     const data = await snapshot.val();
 
     const date = new Date();
@@ -41,6 +45,14 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
     }
   }
 
+  useMount(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user !== null) {
+        init();
+      }
+    });
+  });
+
   return (
     <firebaseContext.Provider
       value={{
@@ -50,7 +62,7 @@ export function FirebaseProvider({ children }: PropsWithChildren<{}>) {
         auth,
       }}
     >
-      <Loader init={init}>{children}</Loader>
+      {children}
     </firebaseContext.Provider>
   );
 }
@@ -59,7 +71,7 @@ export function useFirebase() {
   const context = useContext(firebaseContext);
 
   if (context === null) {
-    throw new Error("Element must be wrapped by a FirebaseProvider");
+    throw new Error('Element must be wrapped by a FirebaseProvider');
   }
 
   return context;
