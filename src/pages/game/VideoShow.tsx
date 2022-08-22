@@ -56,31 +56,33 @@ export function VideoShow() {
           justifyContent: 'flex-end',
         }}
       >
-        <ol
-          className="bg-ivory"
-          style={{
-            padding: 24,
-            margin: 0,
-          }}
-        >
-          {topThree.map((entry, index) => (
-            <li
-              key={entry.start}
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontFamily: 'Neue Machina',
-                fontWeight: '600',
-                fontSize: 32,
-              }}
-            >
-              <span>{index + 1}.</span>
-              <span>{entry.username}</span>
-              <span>-</span>
-              <span>{toTimeString(entry.start, entry.finish)}</span>
-            </li>
-          ))}
-        </ol>
+        {topThree.length > 0 && (
+          <ol
+            className="bg-ivory"
+            style={{
+              padding: 24,
+              margin: 0,
+            }}
+          >
+            {topThree.map((entry, index) => (
+              <li
+                key={entry.start}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  fontFamily: 'Neue Machina',
+                  fontWeight: '600',
+                  fontSize: 32,
+                }}
+              >
+                <span>{index + 1}.</span>
+                <span>{entry.username}</span>
+                <span>-</span>
+                <span>{toTimeString(entry.start, entry.finish)}</span>
+              </li>
+            ))}
+          </ol>
+        )}
         <Link
           to={Path.EXPLANATION}
           className="bg-ivory button row center-content"
