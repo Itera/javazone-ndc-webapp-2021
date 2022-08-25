@@ -1,22 +1,22 @@
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from 'react-router';
 
-import { FirebaseError } from "@firebase/util";
-import { Path } from "../../routes";
-import { UnregisteredEntry } from "../../hooks/useUnregistered";
-import { push } from "@firebase/database";
-import { toTimeString } from "../../utils/toTimeString";
-import { useAsync } from "../../hooks/useAsync";
-import { useAuth } from "../../hooks/useAuth";
-import { useDatabase } from "../../hooks/useDatabase";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Logo } from "../../components/Logo";
+import { FirebaseError } from '@firebase/util';
+import { Link } from 'react-router-dom';
+import { Logo } from '../../components/Logo';
+import { Path } from '../../routes';
+import { UnregisteredEntry } from '../../hooks/useUnregistered';
+import { push } from '@firebase/database';
+import { toTimeString } from '../../utils/toTimeString';
+import { useAsync } from '../../hooks/useAsync';
+import { useAuth } from '../../hooks/useAuth';
+import { useDatabase } from '../../hooks/useDatabase';
+import { useState } from 'react';
 
 export function SignUp() {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
   const location = useLocation();
   const { uid, username, start, finish, elapsed } =
@@ -45,21 +45,21 @@ export function SignUp() {
   }
 
   const [minutes, seconds, milliseconds] = toTimeString(start, finish).split(
-    ":"
+    ':',
   );
 
   return (
-    <div style={{ padding: "2rem 3rem" }}>
+    <div style={{ padding: '2rem 3rem' }}>
       <Logo />
       <Link
         to={Path.UNREGISTERED}
         style={{
-          textDecoration: "none",
-          position: "fixed",
-          top: "2rem",
-          right: "2rem",
-          fontSize: "2rem",
-          color: "black",
+          textDecoration: 'none',
+          position: 'fixed',
+          top: '2rem',
+          right: '2rem',
+          fontSize: '2rem',
+          color: 'black',
         }}
       >
         X
@@ -67,17 +67,17 @@ export function SignUp() {
       <h1
         className="inset-dot"
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          color: "#000",
-          fontSize: "2.875rem",
+          display: 'flex',
+          justifyContent: 'space-between',
+          color: '#000',
+          fontSize: '2.875rem',
         }}
       >
         <span>{username}</span>
         <span>
           <span>{minutes}:</span>
           <span>{seconds}:</span>
-          <span style={{ fontSize: "2rem" }}>{milliseconds}</span>
+          <span style={{ fontSize: '2rem' }}>{milliseconds}</span>
         </span>
       </h1>
       <form onSubmit={submitHandler}>

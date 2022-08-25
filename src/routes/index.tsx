@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation, useNavigate } from 'react-router';
+import { Route, Routes, useNavigate } from 'react-router';
 
 import { Countdown } from '../pages/game/Countdown';
 import { Finish } from '../pages/game/Finish';
@@ -10,7 +10,6 @@ import { SignUp } from '../pages/auth/SignUp';
 import { Unregistered } from '../features/firebase/Unregistered';
 import { UserRegistration } from '../pages/game/UserRegistration';
 import { VideoShow } from '../pages/game/VideoShow';
-import { useEffect } from 'react';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
 import { useMount } from '../hooks/useMount';
 
