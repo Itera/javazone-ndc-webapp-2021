@@ -1,3 +1,4 @@
+import { child, remove } from 'firebase/database';
 import { useLocation, useNavigate } from 'react-router';
 
 import { FirebaseError } from '@firebase/util';
@@ -7,8 +8,6 @@ import { Path } from '../../routes';
 import { UnregisteredEntry } from '../../hooks/useUnregistered';
 import { push } from '@firebase/database';
 import { toTimeString } from '../../utils/toTimeString';
-import { useAsync } from '../../hooks/useAsync';
-import { useAuth } from '../../hooks/useAuth';
 import { useDatabase } from '../../hooks/useDatabase';
 import { useState } from 'react';
 
@@ -22,14 +21,22 @@ export function SignUp() {
   const { uid, username, start, finish, elapsed } =
     location.state as UnregisteredEntry;
 
-  const { addUser } = useAuth();
-  const { daily } = useDatabase();
-  const { callback, loading, error } = useAsync(addUser);
+  const { daily, unregistered } = useDatabase();
 
-  function submitHandler(event: React.FormEvent<HTMLFormElement>) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<FirebaseError | null>(null);
+
+  async function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    callback(name, phone, email, consent, uid, username).then(() => {
-      push(daily, {
+
+    setIsLoading(() => true);
+    setError(() => null);
+
+    try {
+      const documentRef = child(unregistered, `/${uid}`);
+      await remove(documentRef);
+
+      await push(daily, {
         start,
         finish,
         elapsed,
@@ -38,10 +45,12 @@ export function SignUp() {
         phone,
         email,
         consent,
-      }).then(() => {
-        navigate(Path.USER, { replace: true });
       });
-    });
+      navigate(Path.USER, { replace: true });
+    } catch (err) {
+      setError(() => err as FirebaseError);
+      setIsLoading(() => false);
+    }
   }
 
   const [minutes, seconds, milliseconds] = toTimeString(start, finish).split(
@@ -125,10 +134,10 @@ export function SignUp() {
             <span></span>I wish to keep in contact with Itera through email
           </label>
         </div>
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={isLoading}>
           Register my score
         </button>
-        {error !== null && <p>{(error as FirebaseError).code}</p>}
+        {error !== null && <p>{error.code}</p>}
       </form>
     </div>
   );

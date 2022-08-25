@@ -1,6 +1,5 @@
-import { ref } from 'firebase/database';
-
 import { DatabasePath } from '../domain';
+import { ref } from 'firebase/database';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
 import { useState } from 'react';
 
@@ -16,9 +15,11 @@ export function useDatabase() {
     leaderboard: ref(db, DatabasePath.LEADERBOARD),
     daily: ref(
       db,
-      `${DatabasePath.LEADERBOARD}/${today}/${DatabasePath.ENTRY}`
+      `${DatabasePath.LEADERBOARD}/${today}/${DatabasePath.ENTRY}`,
     ),
-    users: ref(db, DatabasePath.USERS),
-    unregistered: ref(db, `${DatabasePath.UNREGISTERED}/${today}/${DatabasePath.ENTRY}`),
+    unregistered: ref(
+      db,
+      `${DatabasePath.UNREGISTERED}/${today}/${DatabasePath.ENTRY}`,
+    ),
   };
 }
