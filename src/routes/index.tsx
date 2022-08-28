@@ -1,5 +1,6 @@
 import { Route, Routes, useNavigate } from 'react-router';
 
+import { Admin } from '../pages/admin';
 import { Countdown } from '../pages/game/Countdown';
 import { Finish } from '../pages/game/Finish';
 import { Game } from '../pages/game/Game';
@@ -7,6 +8,7 @@ import { Home } from '../pages';
 import { Profile } from '../pages/Profile';
 import { SignIn } from '../pages/auth/SignIn';
 import { SignUp } from '../pages/auth/SignUp';
+import { Stats } from '../pages/admin/Stats';
 import { Unregistered } from '../features/firebase/Unregistered';
 import { UserRegistration } from '../pages/game/UserRegistration';
 import { VideoShow } from '../pages/game/VideoShow';
@@ -26,6 +28,8 @@ export enum Path {
 
   REGISTRATION = '/auth/sign-up',
   LOGIN = '/auth/sign-in',
+
+  ADMIN = '/admin',
 }
 
 export function Router() {
@@ -55,6 +59,9 @@ export function Router() {
 
         <Route path={Path.REGISTRATION} element={<SignUp />} />
         <Route path={Path.LOGIN} element={<SignIn />} />
+
+        <Route path={Path.ADMIN} element={<Admin />} />
+        <Route path={`${Path.ADMIN}/:date`} element={<Stats />} />
       </Routes>
     </>
   );

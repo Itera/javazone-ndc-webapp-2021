@@ -5,9 +5,20 @@ export function Home() {
   return (
     <>
       <h1>Navigation links</h1>
-      <Link to={Path.VIDEOSHOW}>Game</Link>
-      <Link to={Path.UNREGISTERED}>Registration</Link>
-      <Link to={Path.LOGIN}>Sign In</Link>
+      <ul>
+        <li>
+          <Link to={Path.VIDEOSHOW}>Game</Link>
+        </li>
+        <li>
+          <Link to={Path.UNREGISTERED}>Registration</Link>
+        </li>
+        <li>
+          <Link to={Path.ADMIN}>Admin</Link>
+        </li>
+        <li>
+          <Link to={Path.LOGIN}>Sign In</Link>
+        </li>
+      </ul>
     </>
   );
 }
