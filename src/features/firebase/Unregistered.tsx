@@ -39,7 +39,7 @@ export function Unregistered() {
   const { unregistered, ongoing } = useUnregistered();
 
   return (
-    <div style={{ padding: '2rem 3rem' }}>
+    <div style={{ padding: '2rem 3rem', height: '100vh', overflow: 'auto' }}>
       <Logo />
       <h1
         style={{

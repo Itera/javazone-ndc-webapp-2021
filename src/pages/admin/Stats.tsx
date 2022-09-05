@@ -77,7 +77,7 @@ export function Stats() {
     sortedAbandoned && sortedAbandoned[sortedAbandoned.length - 1];
 
   return (
-    <div style={{ padding: '24px 32px', height: '100vh', overflow: 'scroll' }}>
+    <div style={{ padding: '24px 32px', height: '100vh', overflow: 'auto' }}>
       <Link to={Path.ADMIN}>Back</Link>
       <h1>Statistics for {params.date}</h1>
       <table>
