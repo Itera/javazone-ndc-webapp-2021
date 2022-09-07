@@ -12,6 +12,7 @@ import { Stats } from '../pages/admin/Stats';
 import { Unregistered } from '../features/firebase/Unregistered';
 import { UserRegistration } from '../pages/game/UserRegistration';
 import { VideoShow } from '../pages/game/VideoShow';
+import { Winner } from '../pages/admin/Winner';
 import { useFirebase } from '../features/firebase/FirebaseProvider';
 import { useMount } from '../hooks/useMount';
 
@@ -62,6 +63,7 @@ export function Router() {
 
         <Route path={Path.ADMIN} element={<Admin />} />
         <Route path={`${Path.ADMIN}/:date`} element={<Stats />} />
+        <Route path={`${Path.ADMIN}/:date/winner`} element={<Winner />} />
       </Routes>
     </>
   );

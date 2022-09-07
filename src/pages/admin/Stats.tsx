@@ -11,16 +11,11 @@ import { useState } from 'react';
 
 const logger = new Logger('Stats');
 
-function getRandomInt(max: number): number {
-  return Math.floor(Math.random() * max);
-}
-
 export function Stats() {
   const params = useParams();
   const { root } = useDatabase();
   const [data, setData] = useState<any>(null);
   const [abandoned, setAbandoned] = useState<any>(null);
-  const [winner, setWinner] = useState<number | null>(null);
 
   useMount(() => {
     const dailyRegistered = ref(
@@ -81,14 +76,13 @@ export function Stats() {
   const slowestAbandoned =
     sortedAbandoned && sortedAbandoned[sortedAbandoned.length - 1];
 
-  function getWinner() {
-    setWinner(getRandomInt(sorted.length));
-  }
-
   return (
     <div style={{ padding: '24px 32px', height: '100vh', overflow: 'auto' }}>
       <Link to={Path.ADMIN}>Back</Link>
       <h1>Statistics for {params.date}</h1>
+      <Link to={`${Path.ADMIN}/${params.date}/winner`} className="button">
+        Get lucky winner!
+      </Link>
       <table>
         <tbody>
           <tr>
@@ -166,47 +160,6 @@ export function Stats() {
           </li>
         ))}
       </ol>
-      <button onClick={getWinner}>Get lucky winner!</button>
-      {winner !== null && (
-        <table>
-          <tbody>
-            <tr>
-              <td>Rank</td>
-              <td>
-                <b>{winner}</b>
-              </td>
-            </tr>
-            <tr>
-              <td>Username</td>
-              <td>
-                <b>{sorted[winner].username}</b>
-              </td>
-            </tr>
-            <tr>
-              <td>Name</td>
-              <td>{sorted[winner].name}</td>
-            </tr>
-            <tr>
-              <td>Time</td>
-              <td>
-                {toTimeString(sorted[winner].start, sorted[winner].finish)}
-              </td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td>{sorted[winner].email}</td>
-            </tr>
-            <tr>
-              <td>Phonenumber</td>
-              <td>{sorted[winner].phone}</td>
-            </tr>
-            <tr>
-              <td>Consent</td>
-              <td>{String(sorted[winner].consent)}</td>
-            </tr>
-          </tbody>
-        </table>
-      )}
     </div>
   );
 }
