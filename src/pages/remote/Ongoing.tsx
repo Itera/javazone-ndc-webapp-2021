@@ -1,27 +1,28 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-
 import { Logger } from '../../features/logging/logger';
 import { Path } from '../../routes';
 import { update } from 'firebase/database';
 import { useDatabase } from '../../hooks/useDatabase';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useUnregistered } from '../../hooks/useUnregistered';
 
 export function Ongoing(): JSX.Element {
   const [logger] = useState(new Logger('Ongoing'));
   const navigate = useNavigate();
-  const location = useLocation();
 
+  const { ongoing } = useUnregistered();
   const { unregistered } = useDatabase();
-  const { uuid, username, registrationTime } = location.state;
 
   async function clickHandler() {
-    logger.info(`Ending run for [uuid=${uuid}`);
+    const { uid, username } = ongoing[0];
+    logger.debug(`Ending run for [uid=${uid}`);
+
+    const now = Date.now();
 
     await update(unregistered, {
-      [uuid]: {
+      [uid]: {
         username,
-        registrationTime,
-        finish: Date.now(),
+        finish: now,
       },
     });
 

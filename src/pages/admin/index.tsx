@@ -14,7 +14,7 @@ export function Admin() {
   const [data, setData] = useState<Array<string> | null>(null);
 
   useMount(() => {
-    onValue(leaderboard, (snapshot) => {
+    const unsubscribe = onValue(leaderboard, (snapshot) => {
       if (!snapshot.exists()) {
         logger.warn('leaderboard data is unreachable');
         return;
@@ -24,6 +24,10 @@ export function Admin() {
       const sorted = dates.sort((a, b) => b.localeCompare(a));
       setData(sorted);
     });
+
+    return () => {
+      unsubscribe();
+    };
   });
 
   return (

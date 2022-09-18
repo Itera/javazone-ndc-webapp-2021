@@ -1,14 +1,30 @@
-import { Arrow } from '../../components/Arrow';
-import { Link } from 'react-router-dom';
 import { Path } from '../../routes';
 import bricks from '../../statics/images/bricks.png';
 import standVideo from '../../statics/videos/StandVideo.mp4';
 import { toTimeString } from '../../utils/toTimeString';
+import { useEffect } from 'react';
 import { useLeaderboard } from '../../hooks/useLeaderboard';
+import { useNavigate } from 'react-router-dom';
+import { useUnregistered } from '../../hooks/useUnregistered';
 
 export function VideoShow() {
+  const navigate = useNavigate();
+
   const leaderboard = useLeaderboard();
   const topThree = leaderboard.slice(0, 3);
+
+  const { ongoing } = useUnregistered();
+
+  useEffect(() => {
+    if (ongoing.length === 0) {
+      return;
+    }
+
+    navigate(Path.COUNTDOWN, {
+      state: ongoing[0],
+      replace: true,
+    });
+  }, [ongoing, navigate]);
 
   return (
     <div className="fill-screen bg-midnight" style={{ position: 'relative' }}>
@@ -83,23 +99,6 @@ export function VideoShow() {
             ))}
           </ol>
         )}
-        <Link
-          to={Path.EXPLANATION}
-          className="bg-ivory button row center-content"
-          style={{
-            display: 'inline-flex',
-            fontSize: '5rem',
-            backgroundColor: '#EEEDE4',
-            color: 'black',
-            float: 'right',
-          }}
-          replace
-        >
-          <Arrow color="black" />
-          <span style={{ display: 'inline-block', marginTop: '-3px' }}>
-            PLAY GAME
-          </span>
-        </Link>
       </div>
     </div>
   );

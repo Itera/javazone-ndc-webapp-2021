@@ -61,7 +61,7 @@ export function UserRegistration(): JSX.Element {
         <Cube src={cubeTwo} letter={username.slice(1, 2)} />
         <Cube src={cubeThree} letter={username.slice(2, 3)} />
       </div>
-      <button onClick={clickHandler}>START</button>
+      <button onClick={clickHandler}>READY</button>
       <Link to={Path.EXPLANATION}>Back</Link>
       <input
         value={username}
