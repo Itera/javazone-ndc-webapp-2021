@@ -10,6 +10,9 @@ export function Home() {
           <Link to={Path.VIDEOSHOW}>Game</Link>
         </li>
         <li>
+          <Link to={Path.EXPLANATION}>Remote</Link>
+        </li>
+        <li>
           <Link to={Path.UNREGISTERED}>Registration</Link>
         </li>
         <li>
