@@ -71,7 +71,7 @@ export function UserRegistration(): JSX.Element {
           width: 490,
           letterSpacing: 138,
           background: 'transparent',
-          border: '',
+          border: 'transparent',
           color: 'transparent',
           outline: 'none',
           position: 'absolute',
