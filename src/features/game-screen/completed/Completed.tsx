@@ -17,7 +17,7 @@ export function Completed() {
   useMount(() => {
     const timer = setTimeout(() => {
       navigate(Path.VIDEOSHOW, { replace: true });
-    }, 30000);
+    }, 20000);
 
     return () => {
       clearTimeout(timer);

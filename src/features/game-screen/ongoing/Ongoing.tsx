@@ -32,22 +32,26 @@ export function Ongoing() {
           return;
         }
 
-        if (typeof run.finish !== 'undefined') {
+        if (
+          typeof run.finish === 'undefined' &&
+          typeof run.start === 'undefined'
+        ) {
           update(unregistered, {
             [uid]: {
               ...run,
               start: start,
+            },
+          });
+        }
+
+        if (typeof run.finish !== 'undefined') {
+          navigate(Path.FINISH, {
+            state: {
+              ...run,
+              start: start,
               elapsed: run.finish - start,
             },
-          }).then(() => {
-            navigate(Path.FINISH, {
-              state: {
-                ...run,
-                start: start,
-                elapsed: run.finish - start,
-              },
-              replace: true,
-            });
+            replace: true,
           });
         }
       }

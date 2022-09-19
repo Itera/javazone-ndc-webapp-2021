@@ -37,13 +37,7 @@ export function UserRegistration(): JSX.Element {
       },
     });
 
-    navigate(Path.ONGOING, {
-      state: {
-        username,
-        uuid: generatedKey,
-        registrationTime: now,
-      },
-    });
+    navigate(Path.ONGOING);
   }
 
   return (
