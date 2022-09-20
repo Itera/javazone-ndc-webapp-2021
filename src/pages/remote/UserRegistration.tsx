@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { createRef, useRef, useState } from 'react';
 import { push, update } from 'firebase/database';
 
 import { Cube } from '../../features/game-screen/explanation/Cube';
@@ -8,7 +9,7 @@ import cubeOne from '../../statics/svgs/Kube1.svg';
 import cubeThree from '../../statics/svgs/Kube3.svg';
 import cubeTwo from '../../statics/svgs/Kube2.svg';
 import { useDatabase } from '../../hooks/useDatabase';
-import { useState } from 'react';
+import { useMount } from '../../hooks/useMount';
 
 export function UserRegistration(): JSX.Element {
   const [logger] = useState(new Logger('UserRegistration'));
@@ -40,6 +41,13 @@ export function UserRegistration(): JSX.Element {
     navigate(Path.ONGOING);
   }
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  useMount(() => {
+    if (inputRef.current !== null) {
+      inputRef.current.focus();
+    }
+  });
+
   return (
     <div
       className="column center-content"
@@ -58,6 +66,7 @@ export function UserRegistration(): JSX.Element {
       <button onClick={clickHandler}>READY</button>
       <Link to={Path.EXPLANATION}>Back</Link>
       <input
+        ref={inputRef}
         value={username}
         onChange={(event) => setUsername(event.target.value.slice(0, 3))}
         style={{
