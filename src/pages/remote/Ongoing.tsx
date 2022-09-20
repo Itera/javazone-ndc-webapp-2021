@@ -34,6 +34,21 @@ export function Ongoing(): JSX.Element {
 
   const current = ongoing[0];
 
+  if (typeof current === 'undefined' || typeof current.start === 'undefined') {
+    return (
+      <div
+        className="center-content"
+        style={{
+          justifyContent: 'center',
+          height: '100vh',
+          flexDirection: 'column',
+        }}
+      >
+        <h1>Get Ready!</h1>
+      </div>
+    );
+  }
+
   return (
     <div
       className="center-content"
@@ -43,10 +58,7 @@ export function Ongoing(): JSX.Element {
         flexDirection: 'column',
       }}
     >
-      {typeof current !== 'undefined' &&
-        typeof current.start !== 'undefined' && (
-          <TimeDisplay start={current.start} />
-        )}
+      <TimeDisplay start={current.start} />
       <button
         style={{
           fontSize: 150,
