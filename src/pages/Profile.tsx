@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Logo } from '../components/Logo';
 import { Path } from '../routes';
-import PriceImage from '../statics/images/Sonos.png';
+import PriceImage from '../statics/images/ticketmaster.jpg';
 
 export function Profile() {
   return (
@@ -32,7 +32,7 @@ export function Profile() {
       </p>
       <img
         src={PriceImage}
-        style={{ width: '100%', maxWidth: '1000px' }}
+        style={{ width: '100%', maxWidth: '1000px', marginBottom: '32px' }}
         alt=""
       />
       <Link

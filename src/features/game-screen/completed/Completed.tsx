@@ -47,7 +47,8 @@ export function Completed() {
           <Highscore entry={run} />
           <div style={{ paddingLeft: '4rem' }}>
             <p style={{ fontSize: '4rem', lineHeight: '5rem', marginTop: 0 }}>
-              Register on the iPad to enter the draft to win a Sonos One!
+              Register on the iPad to enter the draft to win a giftcard from
+              Ticketmaster!
             </p>
           </div>
         </div>

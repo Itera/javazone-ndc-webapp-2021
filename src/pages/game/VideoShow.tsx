@@ -42,7 +42,9 @@ export function VideoShow() {
             marginTop: '-8vh',
           }}
         >
-          <span style={{ fontSize: '2.5rem' }}>Build and win a Sonos One</span>
+          <span style={{ fontSize: '2.5rem' }}>
+            Build and win a giftcard from Ticketmaster
+          </span>
           <h1>Build Itera with us?</h1>
           <img
             src={bricks}

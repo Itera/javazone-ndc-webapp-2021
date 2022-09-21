@@ -56,7 +56,8 @@ export function Unregistered() {
           lineHeight: '3rem',
         }}
       >
-        Select your username to register for a chance to win a Sonos One!
+        Select your username to register for a chance to win a giftcard from
+        Ticketmaster!
       </p>
       <ul>
         {unregistered
