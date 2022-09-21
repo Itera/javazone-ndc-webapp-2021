@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/javazone-ndc-webapp-2021/static/css/main.b3aa705b.chunk.css",
-    "main.js": "/javazone-ndc-webapp-2021/static/js/main.e3f55490.chunk.js",
-    "main.js.map": "/javazone-ndc-webapp-2021/static/js/main.e3f55490.chunk.js.map",
+    "main.js": "/javazone-ndc-webapp-2021/static/js/main.9fa85af8.chunk.js",
+    "main.js.map": "/javazone-ndc-webapp-2021/static/js/main.9fa85af8.chunk.js.map",
     "runtime-main.js": "/javazone-ndc-webapp-2021/static/js/runtime-main.677f9182.js",
     "runtime-main.js.map": "/javazone-ndc-webapp-2021/static/js/runtime-main.677f9182.js.map",
     "static/css/2.679831fc.chunk.css": "/javazone-ndc-webapp-2021/static/css/2.679831fc.chunk.css",
@@ -19,15 +19,15 @@
     "static/media/Kube2.ef4d286f.svg": "/javazone-ndc-webapp-2021/static/media/Kube2.ef4d286f.svg",
     "static/media/Kube3.7d3e9fec.svg": "/javazone-ndc-webapp-2021/static/media/Kube3.7d3e9fec.svg",
     "static/media/Logo.15c766bf.svg": "/javazone-ndc-webapp-2021/static/media/Logo.15c766bf.svg",
-    "static/media/Sonos.d67e50ca.png": "/javazone-ndc-webapp-2021/static/media/Sonos.d67e50ca.png",
     "static/media/StandVideo.14230d9e.mp4": "/javazone-ndc-webapp-2021/static/media/StandVideo.14230d9e.mp4",
-    "static/media/bricks.9f645405.png": "/javazone-ndc-webapp-2021/static/media/bricks.9f645405.png"
+    "static/media/bricks.9f645405.png": "/javazone-ndc-webapp-2021/static/media/bricks.9f645405.png",
+    "static/media/ticketmaster.9085f16e.jpg": "/javazone-ndc-webapp-2021/static/media/ticketmaster.9085f16e.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.677f9182.js",
     "static/css/2.679831fc.chunk.css",
     "static/js/2.f3ea9527.chunk.js",
     "static/css/main.b3aa705b.chunk.css",
-    "static/js/main.e3f55490.chunk.js"
+    "static/js/main.9fa85af8.chunk.js"
   ]
 }
