@@ -69,6 +69,7 @@ export function UserRegistration(): JSX.Element {
         ref={inputRef}
         value={username}
         onChange={(event) => setUsername(event.target.value.slice(0, 3))}
+        spellCheck={false}
         style={{
           fontSize: 75,
           width: 490,
