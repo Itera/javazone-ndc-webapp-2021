@@ -72,7 +72,7 @@ export function UserRegistration(): JSX.Element {
         spellCheck={false}
         style={{
           fontSize: 75,
-          width: 490,
+          width: '100vw',
           letterSpacing: 138,
           background: 'transparent',
           border: 'transparent',
@@ -80,7 +80,7 @@ export function UserRegistration(): JSX.Element {
           outline: 'none',
           position: 'absolute',
           top: '40vh',
-          left: '16vw',
+          left: 0,
         }}
       />
     </div>
