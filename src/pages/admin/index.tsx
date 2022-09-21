@@ -31,7 +31,13 @@ export function Admin() {
   });
 
   return (
-    <>
+    <div
+      style={{
+        padding: '24px 32px',
+        height: '100vh',
+        overflow: 'auto',
+      }}
+    >
       <h1>Hent informasjon for en gitt dag</h1>
       <ul>
         {data?.map((datapoint) => (
@@ -40,6 +46,6 @@ export function Admin() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
