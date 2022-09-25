@@ -23,7 +23,7 @@ export function Stats() {
       `${DatabasePath.LEADERBOARD}/${params.date}/${DatabasePath.ENTRY}`,
     );
 
-    onValue(dailyRegistered, (snapshot) => {
+    const unsubscribeRegistered = onValue(dailyRegistered, (snapshot) => {
       if (!snapshot.exists()) {
         logger.error(
           `Attempted to read data for non existing [date=${params.date}]`,
@@ -38,7 +38,7 @@ export function Stats() {
       root,
       `${DatabasePath.UNREGISTERED}/${params.date}/${DatabasePath.ENTRY}`,
     );
-    onValue(dailyUnregistered, (snapshot) => {
+    const unsubscribeUnregistered = onValue(dailyUnregistered, (snapshot) => {
       if (!snapshot.exists()) {
         logger.warn(`Found no unregistered entries for ${params.date}`);
         return;
@@ -46,6 +46,11 @@ export function Stats() {
 
       setAbandoned(snapshot.val());
     });
+
+    return () => {
+      unsubscribeRegistered();
+      unsubscribeUnregistered();
+    };
   });
 
   if (data === null) {

@@ -29,7 +29,7 @@ export function Winner() {
       `${DatabasePath.LEADERBOARD}/${params.date}/${DatabasePath.ENTRY}`,
     );
 
-    onValue(dailyRegistered, (snapshot) => {
+    const unsubscribe = onValue(dailyRegistered, (snapshot) => {
       if (!snapshot.exists()) {
         logger.error(
           `Attempted to read data for non existing [date=${params.date}]`,
@@ -38,6 +38,8 @@ export function Winner() {
       }
       setData(Object.values(snapshot.val()));
     });
+
+    return () => unsubscribe();
   });
 
   function getWinner() {
