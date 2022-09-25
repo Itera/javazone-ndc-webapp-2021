@@ -81,6 +81,22 @@ export function Stats() {
   const slowestAbandoned =
     sortedAbandoned && sortedAbandoned[sortedAbandoned.length - 1];
 
+  function generateCSV() {
+    const metadata = 'data:text/csv;charset=utf-8,';
+    const header = 'name,email,phone,consent,time';
+    const data = extracted.reduce(
+      (acc, cur) =>
+        acc +
+        `\n${cur.name},${cur.email},${cur.phone},${cur.consent},${toTimeString(
+          cur.start,
+          cur.finish,
+        )}`,
+      '',
+    );
+    const encoded = encodeURI(metadata + header + data);
+    window.open(encoded);
+  }
+
   return (
     <div style={{ padding: '24px 32px', height: '100vh', overflow: 'auto' }}>
       <Link to={Path.ADMIN}>Back</Link>
@@ -88,6 +104,12 @@ export function Stats() {
       <Link to={`${Path.ADMIN}/${params.date}/winner`} className="button">
         Get lucky winner!
       </Link>
+      <button
+        onClick={generateCSV}
+        style={{ marginLeft: '24px', cursor: 'pointer' }}
+      >
+        Export to CSV
+      </button>
       <table>
         <tbody>
           <tr>
