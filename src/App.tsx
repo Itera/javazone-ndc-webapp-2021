@@ -1,6 +1,6 @@
-import { Router } from './routes';
+import { Router } from './router';
 
-function App() {
+function App(): JSX.Element {
   return (
     <main>
       <Router />
