@@ -43,12 +43,20 @@ export function FirebaseProvider(
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
-export function useFirebase(): FirebaseContext {
+export function useFirebase(): { user: User; db: DatabaseReference } {
   const context = useContext(Context);
 
   if (context === null) {
+    logger.error('Attempted to access firebase context without Provider');
     throw new Error(`Hook must be wrapped by ${FirebaseProvider.name}`);
   }
 
-  return context;
+  const { user, db } = context;
+
+  if (user === null || db === null) {
+    logger.error('Attempted to access firebase context before authentication');
+    throw new Error('Unauthorized access');
+  }
+
+  return { user, db };
 }
