@@ -8,6 +8,10 @@ enum Paths {
   LANDING_PAGE = '/',
 }
 
+function LoadingIndicator(): JSX.Element {
+  return <p role="alert">Loading...</p>;
+}
+
 export function Router(): JSX.Element {
   return (
     <Routes>
@@ -18,7 +22,7 @@ export function Router(): JSX.Element {
       <Route
         path={Paths.LANDING_PAGE}
         element={
-          <Suspense fallback={<p role="alert">Loading...</p>}>
+          <Suspense fallback={<LoadingIndicator />}>
             <LandingPage />
           </Suspense>
         }
