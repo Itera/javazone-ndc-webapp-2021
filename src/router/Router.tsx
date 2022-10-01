@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
 const LandingPage = lazy(() => import('./LangindPage'));
@@ -11,7 +11,10 @@ enum Paths {
 export function Router(): JSX.Element {
   return (
     <Routes>
-      <Route path={Paths.FOUR_O_FOUR} element={<h1>Nothing here...</h1>} />
+      <Route
+        path={Paths.FOUR_O_FOUR}
+        element={<Navigate to={Paths.LANDING_PAGE} replace />}
+      />
       <Route
         path={Paths.LANDING_PAGE}
         element={
