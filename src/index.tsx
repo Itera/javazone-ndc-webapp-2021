@@ -1,18 +1,31 @@
 import 'normalize.css';
 
 import App from './App';
+import { FirebaseProvider } from './service/firebase';
 import { HashRouter } from 'react-router-dom';
+import { Logger } from './service/logger';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
+const logger = new Logger('ApplicationRoot');
+
+const container = document.getElementById('root');
+
+if (container === null) {
+  logger.error('Unable to find mounting element with [id=root]');
+  throw new Error('React mounting element was not found');
+}
+
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <FirebaseProvider>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </FirebaseProvider>
   </React.StrictMode>,
-  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
