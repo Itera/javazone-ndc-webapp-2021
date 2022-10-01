@@ -43,7 +43,10 @@ export function FirebaseProvider(
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
-export function useFirebase(): { user: User; db: DatabaseReference } {
+export function useFirebase(): {
+  user: User;
+  db: DatabaseReference;
+} {
   const context = useContext(Context);
 
   if (context === null) {
