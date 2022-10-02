@@ -1,7 +1,7 @@
 import { User, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { Logger } from '../../logger';
-import { useFirebase } from '../FirebaseContext';
+import { useFirebase } from './useFirebase';
 
 const logger = new Logger('useAuth');
 

@@ -1,7 +1,7 @@
 import { DatabaseReference, child } from 'firebase/database';
 
 import { Logger } from '../../logger';
-import { useFirebase } from '../FirebaseContext';
+import { useFirebase } from './useFirebase';
 
 const logger = new Logger('useDailyDatabase');
 const today = new Date().toISOString().split('T')[0];
