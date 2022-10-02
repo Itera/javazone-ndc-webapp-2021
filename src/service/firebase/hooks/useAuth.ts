@@ -33,7 +33,7 @@ export function useAuth(): {
     const uid = user?.uid;
     logger.trace(`Signing out [user=${uid}]`);
     await auth.signOut();
-    logger.info(`Successfully signed out [user=${uid}]`);
+    logger.debug(`Successfully signed out [user=${uid}]`);
   }
 
   return { signIn, signOut, authenticated: user !== null };
