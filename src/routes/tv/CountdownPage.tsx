@@ -37,13 +37,15 @@ function useViewModel() {
     }
   }, [countdown, navigate, state]);
 
-  return { countdown };
+  return { data: { timeRemaining: countdown } };
 }
 
 function Countdown(): JSX.Element {
-  const { countdown } = useViewModel();
+  const {
+    data: { timeRemaining },
+  } = useViewModel();
 
-  return <>{countdown}</>;
+  return <>{timeRemaining}</>;
 }
 
 export default Countdown;

@@ -27,12 +27,16 @@ function useViewModel() {
   }
 
   return {
-    submitHandler,
+    handlers: {
+      submitHandler,
+    },
   };
 }
 
 function SignUpPage(): JSX.Element {
-  const { submitHandler } = useViewModel();
+  const {
+    handlers: { submitHandler },
+  } = useViewModel();
 
   return (
     <>

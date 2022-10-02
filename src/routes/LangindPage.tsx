@@ -14,12 +14,16 @@ function useViewModel() {
   }
 
   return {
-    signOut: authenticated ? signOutUser : null,
+    handlers: {
+      signOut: authenticated ? signOutUser : null,
+    },
   };
 }
 
 function LandingPage(): JSX.Element {
-  const { signOut } = useViewModel();
+  const {
+    handlers: { signOut },
+  } = useViewModel();
 
   return (
     <>
