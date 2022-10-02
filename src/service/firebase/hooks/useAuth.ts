@@ -1,7 +1,7 @@
 import { User, signInWithEmailAndPassword } from 'firebase/auth';
 
-import { Auth } from '../service/firebase';
-import { Logger } from '../service/logger';
+import { Auth } from '../Firebase';
+import { Logger } from '../../logger';
 
 const logger = new Logger('useAuth');
 
@@ -24,6 +24,7 @@ async function signIn(username: string, password: string): Promise<User> {
 
 export function useAuth(): {
   signIn: (username: string, password: string) => Promise<User>;
+  signOut: () => Promise<void>;
 } {
-  return { signIn };
+  return { signIn, signOut: Auth.signOut };
 }

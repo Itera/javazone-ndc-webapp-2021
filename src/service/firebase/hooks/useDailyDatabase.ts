@@ -1,6 +1,6 @@
 import { DatabaseReference, child } from 'firebase/database';
 
-import { useFirebase } from '../service/firebase';
+import { useFirebase } from '../FirebaseContext';
 
 const today = new Date().toISOString().split('T')[0];
 

@@ -1,7 +1,7 @@
 import { FormEvent } from 'react';
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../service/firebase';
 import { useNavigate } from 'react-router-dom';
 
 const logger = new Logger('SignIn');

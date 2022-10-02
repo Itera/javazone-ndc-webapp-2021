@@ -1,2 +1,3 @@
-export { Auth } from './Firebase';
-export { FirebaseProvider, useFirebase } from './FirebaseProvider';
+export { FirebaseProvider, useFirebase } from './FirebaseContext';
+export { useAuth } from './hooks/useAuth';
+export { useDailyDatabase } from './hooks/useDailyDatabase';
