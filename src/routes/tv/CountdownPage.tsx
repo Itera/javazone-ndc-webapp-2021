@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Logger } from '../../service/logger';
@@ -18,12 +19,31 @@ function useViewModel() {
       navigate(Paths.SIGN_UP);
     }
   });
+
+  const [countdown, setCountdown] = useState(3);
+  useMount(() => {
+    const interval = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  });
+
+  useEffect(() => {
+    if (countdown === 0) {
+      logger.trace('Countdown reached 0, pushing user to next phase');
+      navigate(Paths.BUILD_QUOTE, {
+        state,
+      });
+    }
+  }, [countdown, navigate, state]);
+
+  return { countdown };
 }
 
 function Countdown(): JSX.Element {
-  useViewModel();
+  const { countdown } = useViewModel();
 
-  return <>we here..</>;
+  return <>{countdown}</>;
 }
 
 export default Countdown;

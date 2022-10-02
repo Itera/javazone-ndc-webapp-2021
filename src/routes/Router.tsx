@@ -7,6 +7,7 @@ const SignInPage = lazy(() => import('./auth/SignInPage'));
 const VideoIdlePage = lazy(() => import('./tv/VideoIdlePage'));
 const SignUpPage = lazy(() => import('./tv/SignUpPage'));
 const CountdownPage = lazy(() => import('./tv/CountdownPage'));
+const BuildQuotePage = lazy(() => import('./tv/BuildQuotePage'));
 
 export enum Paths {
   FOUR_O_FOUR = '*',
@@ -17,6 +18,7 @@ export enum Paths {
   VIDEO = '/tv/idle',
   SIGN_UP = '/tv/sign_up',
   COUNTDOWN = '/tv/countdown',
+  BUILD_QUOTE = '/tv/build_quote',
 }
 
 function LoadingIndicator(): JSX.Element {
@@ -70,6 +72,14 @@ export function Router(): JSX.Element {
         element={
           <Suspense fallback={<LoadingIndicator />}>
             <CountdownPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path={Paths.BUILD_QUOTE}
+        element={
+          <Suspense fallback={<LoadingIndicator />}>
+            <BuildQuotePage />
           </Suspense>
         }
       />
