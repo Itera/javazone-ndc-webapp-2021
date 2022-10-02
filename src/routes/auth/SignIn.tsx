@@ -2,13 +2,21 @@ import { FormEvent } from 'react';
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
 import { useAuth } from '../../service/firebase';
+import { useMount } from '../../hooks/useMount';
 import { useNavigate } from 'react-router-dom';
 
 const logger = new Logger('SignIn');
 
 function useViewModel() {
   const navigate = useNavigate();
-  const { signIn } = useAuth();
+  const { signIn, authenticated } = useAuth();
+
+  useMount(() => {
+    if (authenticated) {
+      logger.debug('User attempted to access sign in page while authenticated');
+      navigate(Paths.LANDING_PAGE);
+    }
+  });
 
   function submitHandler(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();

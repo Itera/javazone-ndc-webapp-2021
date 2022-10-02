@@ -11,6 +11,7 @@ const logger = new Logger('FirebaseContext');
 type FirebaseContext = {
   user: User | null;
   db: DatabaseReference | null;
+  auth: typeof Auth;
 };
 
 const Context = createContext<FirebaseContext | null>(null);
@@ -38,15 +39,13 @@ export function FirebaseProvider(
   const value: FirebaseContext = {
     user,
     db: user !== null ? ref(Database, `/${user.uid}`) : null,
+    auth: Auth,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
-export function useFirebase(): {
-  user: User;
-  db: DatabaseReference;
-} {
+export function useFirebase(): FirebaseContext {
   const context = useContext(Context);
 
   if (context === null) {
@@ -54,12 +53,5 @@ export function useFirebase(): {
     throw new Error(`Hook must be wrapped by ${FirebaseProvider.name}`);
   }
 
-  const { user, db } = context;
-
-  if (user === null || db === null) {
-    logger.error('Attempted to access firebase context before authentication');
-    throw new Error('Unauthorized access');
-  }
-
-  return { user, db };
+  return context;
 }
