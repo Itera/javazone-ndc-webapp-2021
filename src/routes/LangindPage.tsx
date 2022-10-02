@@ -31,11 +31,16 @@ function LandingPage(): JSX.Element {
           </li>
         )}
         {signOut && (
-          <li>
-            <button type="button" onClick={signOut}>
-              Sign Out
-            </button>
-          </li>
+          <>
+            <li>
+              <Link to={Paths.VIDEO}>TV</Link>
+            </li>
+            <li>
+              <button type="button" onClick={signOut}>
+                Sign Out
+              </button>
+            </li>
+          </>
         )}
       </ul>
     </>
