@@ -25,6 +25,14 @@ async function signIn(username: string, password: string): Promise<User> {
 export function useAuth(): {
   signIn: (username: string, password: string) => Promise<User>;
   signOut: () => Promise<void>;
+  authenticated: boolean;
 } {
-  return { signIn, signOut: Auth.signOut };
+  async function signOut() {
+    const uid = Auth.currentUser?.uid;
+    logger.trace(`Signing out [user=${uid}]`);
+    await Auth.signOut();
+    logger.info(`Successfully signed out [user=${uid}]`);
+  }
+
+  return { signIn, signOut, authenticated: Auth.currentUser !== null };
 }
