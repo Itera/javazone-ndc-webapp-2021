@@ -20,7 +20,7 @@ export enum Paths {
   SIGN_UP = '/tv/sign_up',
   COUNTDOWN = '/tv/countdown',
   BUILD_QUOTE = '/tv/build_quote',
-  RANKINGS = '/tv/rankins',
+  RANKINGS = '/tv/rankings',
 }
 
 function LoadingIndicator(): JSX.Element {

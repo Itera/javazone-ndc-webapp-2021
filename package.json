@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://itera.github.io/javazone-ndc-webapp-2021",
   "dependencies": {
+    "dirty-kitchen": "^0.3.0",
     "firebase": "^9.10.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",

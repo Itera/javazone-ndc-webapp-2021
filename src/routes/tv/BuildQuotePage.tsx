@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
-import { useAttempts } from '../../service/firebase/hooks/useAttempts';
+import { database } from '../../service/firebase';
 import { useMount } from '../../hooks/useMount';
 import { useState } from 'react';
 
@@ -20,7 +20,6 @@ function useViewModel() {
   });
 
   const [start] = useState(Date.now());
-  const { registerAttempt } = useAttempts();
 
   async function completed() {
     logger.trace('User ended attempt');
@@ -31,7 +30,7 @@ function useViewModel() {
       finish: now,
       username: state.username,
     };
-    await registerAttempt(attempt);
+    await database.registerAttempt(attempt);
 
     navigate(Paths.RANKINGS, {
       state: attempt,

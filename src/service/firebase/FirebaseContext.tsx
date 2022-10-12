@@ -1,7 +1,5 @@
-import { DatabaseReference, ref } from 'firebase/database';
 import { PropsWithChildren, createContext, useState } from 'react';
 
-import { Database } from './Firebase';
 import { Logger } from '../logger';
 import { User } from 'firebase/auth';
 import { auth } from './FirebaseAuth';
@@ -11,7 +9,6 @@ const logger = new Logger('FirebaseContext');
 
 export type FirebaseContext = {
   user: User | null;
-  db: DatabaseReference | null;
 };
 
 export const Context = createContext<FirebaseContext | null>(null);
@@ -33,7 +30,6 @@ export function FirebaseProvider(
 
   const value: FirebaseContext = {
     user,
-    db: user !== null ? ref(Database, `/${user.uid}`) : null,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
