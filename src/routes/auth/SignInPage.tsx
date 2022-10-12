@@ -1,7 +1,7 @@
 import { FormEvent } from 'react';
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
-import { useAuth } from '../../service/firebase';
+import { auth } from '../../service/firebase';
 import { useMount } from '../../hooks/useMount';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,10 +9,9 @@ const logger = new Logger('SignIn');
 
 function useViewModel() {
   const navigate = useNavigate();
-  const { signIn, authenticated } = useAuth();
 
   useMount(() => {
-    if (authenticated) {
+    if (auth.isAuthenticated()) {
       logger.debug('User attempted to access sign in page while authenticated');
       navigate(Paths.LANDING_PAGE);
     }
@@ -30,7 +29,7 @@ function useViewModel() {
       throw new Error('failed to extract form values');
     }
 
-    signIn(email.toString(), password.toString()).then(() => {
+    auth.signIn(email.toString(), password.toString()).then(() => {
       navigate(Paths.LANDING_PAGE);
     });
   }

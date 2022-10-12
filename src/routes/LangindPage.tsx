@@ -1,21 +1,20 @@
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Paths } from './Router';
-import { useAuth } from '../service/firebase';
+import { auth } from '../service/firebase';
 
 function useViewModel() {
   const navigate = useNavigate();
-  const { signOut, authenticated } = useAuth();
 
   function signOutUser() {
-    signOut().then(() => {
+    auth.signOut().then(() => {
       navigate(Paths.SIGN_IN);
     });
   }
 
   return {
     handlers: {
-      signOut: authenticated ? signOutUser : null,
+      signOut: auth.isAuthenticated() ? signOutUser : null,
     },
   };
 }
