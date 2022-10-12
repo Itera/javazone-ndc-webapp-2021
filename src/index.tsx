@@ -1,7 +1,6 @@
 import 'normalize.css';
 
 import App from './App';
-import { FirebaseProvider } from './service/firebase';
 import { HashRouter } from 'react-router-dom';
 import { Logger } from './service/logger';
 import React from 'react';
@@ -20,11 +19,9 @@ if (container === null) {
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <FirebaseProvider>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </FirebaseProvider>
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>,
 );
 
