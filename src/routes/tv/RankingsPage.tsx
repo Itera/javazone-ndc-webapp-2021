@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { DigitalClock } from '../../components/DigitalClock';
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
-import { Time } from '../../components/Time';
 import { useMount } from '../../hooks/useMount';
 
 const logger = new Logger('RankingsPage');
@@ -35,7 +35,7 @@ function Rankings(): JSX.Element {
 
   return (
     <h1>
-      <Time elapsed={elapsed} />
+      <DigitalClock time={elapsed} />
     </h1>
   );
 }
