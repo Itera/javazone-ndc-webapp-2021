@@ -1,4 +1,4 @@
-import type { Attempt, Attempts, Run } from './domain';
+import type { Attempt, AttemptEntry, Attempts, Run } from './domain';
 import { child, get, push, remove } from 'firebase/database';
 import { getAttemptRef, getLeaderboardRef } from './databaseRefs';
 
@@ -19,14 +19,23 @@ class FirebaseRealtimeDB {
     logger.info(`Successfully stored attempt on [key=${key}]`);
   }
 
-  async getAttempts(): Promise<Attempts> {
+  async getAttempts(): Promise<Array<AttemptEntry>> {
+    logger.trace('Retrieving attempts for today');
+
     const snapshot = await get(getAttemptRef());
 
     if (snapshot.exists()) {
-      return snapshot.val();
+      const data = snapshot.val() as Attempts;
+      const entries = Object.entries(data);
+      return entries.map(([key, value]) => ({
+        key,
+        ...value,
+      }));
     }
 
-    logger.error(`Unable to read attempts database`);
+    logger.warn(
+      `Unable to read attempts database, most likely because there are no attempts at the moment`,
+    );
     throw new Error('Unable to read attempts database');
   }
 

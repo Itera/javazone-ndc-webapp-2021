@@ -1,4 +1,4 @@
-import { Attempt, database } from '../../service/firebase';
+import { AttemptEntry, database } from '../../service/firebase';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -10,10 +10,6 @@ import { useMount } from '../../hooks/useMount';
 
 const logger = new Logger('RegistrationPage');
 
-type DataEntry = {
-  key: string;
-} & Attempt;
-
 function useViewModel() {
   const { state } = useLocation();
 
@@ -21,7 +17,7 @@ function useViewModel() {
   useMount(() => {
     if (!isDefined(state)) {
       logger.warn(
-        'Attempted to enter registration page without any attempt in state',
+        'Attempted to enter registration page without any attempt in state. Pushing user to AttemptsPage',
       );
       navigate(Paths.ATTEMPS);
     }
@@ -54,7 +50,7 @@ function useViewModel() {
 
   return {
     data: {
-      attempt: state as DataEntry,
+      attempt: state as AttemptEntry,
     },
     handlers: {
       inputHandler,

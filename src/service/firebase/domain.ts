@@ -8,6 +8,10 @@ export type Attempts = {
   [key: string]: Attempt;
 };
 
+export type AttemptEntry = {
+  key: string;
+} & Attempt;
+
 export type Run = {
   key: string;
   name: string;

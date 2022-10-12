@@ -1,27 +1,15 @@
-import type { Attempt, Attempts } from '../../service/firebase';
-
+import type { AttemptEntry } from '../../service/firebase';
 import { Link } from 'react-router-dom';
 import { Paths } from '../Router';
 import { database } from '../../service/firebase';
 import { useMount } from '../../hooks/useMount';
 import { useState } from 'react';
 
-type DataEntry = {
-  key: string;
-} & Attempt;
-
-function translateData(data: Attempts): Array<DataEntry> {
-  return Object.entries(data).map(([key, value]) => ({
-    key,
-    ...value,
-  }));
-}
-
 function useViewModel() {
-  const [attempts, setAttempts] = useState<Array<DataEntry>>([]);
+  const [attempts, setAttempts] = useState<Array<AttemptEntry>>([]);
 
   useMount(() => {
-    database.getAttempts().then((data) => setAttempts(translateData(data)));
+    database.getAttempts().then((data) => setAttempts(data));
   });
 
   return {
