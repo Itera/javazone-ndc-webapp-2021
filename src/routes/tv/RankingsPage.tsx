@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { DigitalClock } from '../../components/DigitalClock';
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
+import { useCallback } from 'react';
 import { useMount } from '../../hooks/useMount';
 
 const logger = new Logger('RankingsPage');
@@ -21,9 +22,16 @@ function useViewModel() {
     }
   });
 
+  const reset = useCallback(() => {
+    navigate(Paths.VIDEO);
+  }, [navigate]);
+
   return {
     data: {
       elapsed,
+    },
+    handlers: {
+      reset,
     },
   };
 }
@@ -31,11 +39,15 @@ function useViewModel() {
 function Rankings(): JSX.Element {
   const {
     data: { elapsed },
+    handlers: { reset },
   } = useViewModel();
 
   return (
     <h1>
       <DigitalClock time={elapsed} />
+      <button type="button" onClick={reset}>
+        Back to start
+      </button>
     </h1>
   );
 }
