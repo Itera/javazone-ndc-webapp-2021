@@ -1,4 +1,4 @@
-import type { Attempt, Attempts } from './domain';
+import type { Attempt, Attempts, Run } from './domain';
 import {
   Database,
   DatabaseReference,
@@ -7,6 +7,7 @@ import {
   getDatabase,
   push,
   ref,
+  remove,
 } from 'firebase/database';
 
 import { Firebase } from './Firebase';
@@ -66,6 +67,27 @@ class FirebaseRealtimeDB {
 
     logger.error(`Unable to read attempts database`);
     throw new Error('Unable to read attempts database');
+  }
+
+  async registerRun(run: Run): Promise<void> {
+    const { key, ...data } = run;
+    logger.trace(`Registering run for [key=${run.key}]`);
+
+    try {
+      logger.debug(`Writing to leaderboard for attempt [key=${key}]`);
+      const leaderboardEntry = await push(this.getLeaderboardRef(), data);
+      logger.info(
+        `Successfully registered run with [key=${leaderboardEntry.key}]`,
+      );
+
+      logger.debug(`Deleting attempt entry for [key=${key}]`);
+      const ref = child(this.getAttemptRef(), `/${key}`);
+      await remove(ref);
+      logger.info(`Successfully cleaned up attempt entry [key=${key}]`);
+    } catch (err) {
+      logger.error(`Failed to register run due to [err=${err}]`);
+      throw new Error('Failed to register run');
+    }
   }
 }
 

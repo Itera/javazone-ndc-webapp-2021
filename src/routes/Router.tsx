@@ -14,6 +14,7 @@ const RankingsPage = lazy(() => import('./tv/RankingsPage'));
 
 // IPad related pages
 const AttemptsPage = lazy(() => import('./ipad/AttemptsPage'));
+const RegistrationPage = lazy(() => import('./ipad/RegistrationPage'));
 
 export enum Paths {
   FOUR_O_FOUR = '*',
@@ -107,6 +108,14 @@ export function Router(): JSX.Element {
         element={
           <Suspense>
             <AttemptsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path={Paths.REGISTRATION}
+        element={
+          <Suspense>
+            <RegistrationPage />
           </Suspense>
         }
       />

@@ -1,4 +1,4 @@
-import type { Attempt, Attempts } from '../../service/firebase/domain';
+import type { Attempt, Attempts } from '../../service/firebase';
 
 import { Link } from 'react-router-dom';
 import { Paths } from '../Router';

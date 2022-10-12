@@ -7,3 +7,11 @@ export type Attempt = {
 export type Attempts = {
   [key: string]: Attempt;
 };
+
+export type Run = {
+  key: string;
+  name: string;
+  phonenumber: string;
+  email: string;
+  consent: boolean;
+} & Attempt;
