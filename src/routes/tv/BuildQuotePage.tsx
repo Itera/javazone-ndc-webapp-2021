@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
+import { TimingClock } from '../../components/TimingClock/TimingClock';
 import { database } from '../../service/firebase';
 import { useMount } from '../../hooks/useMount';
 import { useState } from 'react';
@@ -49,12 +50,13 @@ function useViewModel() {
 
 function BuildQuotePage(): JSX.Element {
   const {
+    data: { start },
     handlers: { completed },
   } = useViewModel();
 
   return (
     <h1>
-      Hello
+      <TimingClock start={start} />
       <button type="button" onClick={completed}>
         Done
       </button>
