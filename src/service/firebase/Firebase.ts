@@ -1,4 +1,3 @@
-import { getDatabase } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 
 export const Firebase = initializeApp({
@@ -10,5 +9,3 @@ export const Firebase = initializeApp({
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
 });
-
-export const Database = getDatabase(Firebase);

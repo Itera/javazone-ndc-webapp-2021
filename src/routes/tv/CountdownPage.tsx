@@ -40,7 +40,7 @@ function useViewModel() {
   return { data: { timeRemaining: countdown } };
 }
 
-function Countdown(): JSX.Element {
+function CountdownPage(): JSX.Element {
   const {
     data: { timeRemaining },
   } = useViewModel();
@@ -48,4 +48,4 @@ function Countdown(): JSX.Element {
   return <>{timeRemaining}</>;
 }
 
-export default Countdown;
+export default CountdownPage;

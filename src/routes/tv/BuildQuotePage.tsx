@@ -47,7 +47,7 @@ function useViewModel() {
   };
 }
 
-function BuildQuote(): JSX.Element {
+function BuildQuotePage(): JSX.Element {
   const {
     handlers: { completed },
   } = useViewModel();
@@ -62,4 +62,4 @@ function BuildQuote(): JSX.Element {
   );
 }
 
-export default BuildQuote;
+export default BuildQuotePage;

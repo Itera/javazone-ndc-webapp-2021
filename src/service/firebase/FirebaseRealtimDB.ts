@@ -1,7 +1,9 @@
+import type { Attempt, Attempts } from './domain';
 import {
   Database,
   DatabaseReference,
   child,
+  get,
   getDatabase,
   push,
   ref,
@@ -15,13 +17,6 @@ import { isDefined } from 'dirty-kitchen/lib/type_checks';
 
 const logger = new Logger('FirebaseRealtimeDB');
 const today = new Date().toISOString().split('T')[0];
-
-type Attempt = {
-  username: string;
-  start: number;
-  finish: number;
-};
-
 class FirebaseRealtimeDB {
   private db: Database;
 
@@ -60,6 +55,17 @@ class FirebaseRealtimeDB {
 
     const { key } = await push(this.getAttemptRef(), payload);
     logger.info(`Successfully stored attempt on [key=${key}]`);
+  }
+
+  async getAttempts(): Promise<Attempts> {
+    const snapshot = await get(this.getAttemptRef());
+
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+
+    logger.error(`Unable to read attempts database`);
+    throw new Error('Unable to read attempts database');
   }
 }
 

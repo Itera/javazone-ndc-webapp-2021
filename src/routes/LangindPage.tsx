@@ -39,6 +39,9 @@ function LandingPage(): JSX.Element {
               <Link to={Paths.VIDEO}>TV</Link>
             </li>
             <li>
+              <Link to={Paths.ATTEMPS}>IPad</Link>
+            </li>
+            <li>
               <button type="button" onClick={signOut}>
                 Sign Out
               </button>

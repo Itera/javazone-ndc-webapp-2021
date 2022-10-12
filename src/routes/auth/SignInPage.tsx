@@ -41,7 +41,7 @@ function useViewModel() {
   };
 }
 
-function SignIn() {
+function SignInPage() {
   const {
     handlers: { submitHandler },
   } = useViewModel();
@@ -59,4 +59,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInPage;

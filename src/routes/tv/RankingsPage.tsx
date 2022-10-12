@@ -36,7 +36,7 @@ function useViewModel() {
   };
 }
 
-function Rankings(): JSX.Element {
+function RankingsPage(): JSX.Element {
   const {
     data: { elapsed },
     handlers: { reset },
@@ -52,4 +52,4 @@ function Rankings(): JSX.Element {
   );
 }
 
-export default Rankings;
+export default RankingsPage;

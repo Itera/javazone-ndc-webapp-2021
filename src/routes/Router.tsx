@@ -1,14 +1,19 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
+// General pages
 const LandingPage = lazy(() => import('./LangindPage'));
 const SignInPage = lazy(() => import('./auth/SignInPage'));
 
+// TV related pages
 const VideoIdlePage = lazy(() => import('./tv/VideoIdlePage'));
 const SignUpPage = lazy(() => import('./tv/SignUpPage'));
 const CountdownPage = lazy(() => import('./tv/CountdownPage'));
 const BuildQuotePage = lazy(() => import('./tv/BuildQuotePage'));
 const RankingsPage = lazy(() => import('./tv/RankingsPage'));
+
+// IPad related pages
+const AttemptsPage = lazy(() => import('./ipad/AttemptsPage'));
 
 export enum Paths {
   FOUR_O_FOUR = '*',
@@ -21,6 +26,9 @@ export enum Paths {
   COUNTDOWN = '/tv/countdown',
   BUILD_QUOTE = '/tv/build_quote',
   RANKINGS = '/tv/rankings',
+
+  ATTEMPS = '/ipad/attempts',
+  REGISTRATION = '/ipad/registration',
 }
 
 function LoadingIndicator(): JSX.Element {
@@ -90,6 +98,15 @@ export function Router(): JSX.Element {
         element={
           <Suspense fallback={<LoadingIndicator />}>
             <RankingsPage />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path={Paths.ATTEMPS}
+        element={
+          <Suspense>
+            <AttemptsPage />
           </Suspense>
         }
       />
