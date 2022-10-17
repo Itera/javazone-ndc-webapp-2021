@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
+import { Quote } from '../../components/Quote';
 import { TimingClock } from '../../components/TimingClock';
 import { database } from '../../service/firebase';
 import { useMount } from '../../hooks/useMount';
@@ -56,6 +57,7 @@ function BuildQuotePage(): JSX.Element {
 
   return (
     <h1>
+      <Quote />
       <TimingClock start={start} />
       <button type="button" onClick={completed}>
         Done
