@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Logger } from '../../service/logger';
 import { Paths } from '../Router';
-import { TimingClock } from '../../components/TimingClock/TimingClock';
+import { TimingClock } from '../../components/TimingClock';
 import { database } from '../../service/firebase';
 import { useMount } from '../../hooks/useMount';
 import { useState } from 'react';
