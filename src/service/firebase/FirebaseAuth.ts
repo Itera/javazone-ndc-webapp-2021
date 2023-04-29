@@ -49,11 +49,11 @@ class FirebaseAuth {
     logger.debug(
       `Auth state change handler was invoked with [user=${user?.uid}]`,
     );
-    this.notifySubscribers(user);
+    this.notify(user);
     this.user = user;
   }
 
-  private notifySubscribers(user: User | null) {
+  private notify(user: User | null) {
     this.subscribers.forEach((callback) => callback(user));
   }
 

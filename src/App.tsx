@@ -1,10 +1,11 @@
+import { Main } from './components/Main';
 import { Router } from './routes';
 
 function App(): JSX.Element {
   return (
-    <main>
+    <Main>
       <Router />
-    </main>
+    </Main>
   );
 }
 

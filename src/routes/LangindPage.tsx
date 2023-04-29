@@ -2,8 +2,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { Paths } from './Router';
 import { auth } from '../service/firebase';
+import { useUser } from '../components/Main';
 
 function useViewModel() {
+  const { user } = useUser();
   const navigate = useNavigate();
 
   function signOutUser() {
@@ -14,7 +16,7 @@ function useViewModel() {
 
   return {
     handlers: {
-      signOut: auth.isAuthenticated() ? signOutUser : null,
+      signOut: user !== null ? signOutUser : null,
     },
   };
 }
