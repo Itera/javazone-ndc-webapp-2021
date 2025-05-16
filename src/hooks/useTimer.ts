@@ -12,30 +12,36 @@ export function useTimer() {
 
   async function start(username: string, startTime: number): Promise<number> {
     logger.trace("Starting new timer for user", username);
-    const generatedKey = push(daily).key;
 
-    if (generatedKey === null) {
-      logger.error("Failed to generate new key");
-      throw new Error("Failed to generate new key");
+    let timerKey = sessionStorage.getItem("timerKey");
+
+    if (timerKey === null) {
+      timerKey = push(daily).key;
+      if (timerKey === null) {
+        logger.error("Failed to generate new key");
+        throw new Error("Failed to generate new key");
+      }
+      sessionStorage.setItem("timerKey", timerKey);
     }
 
     await update(unregistered, {
-      [generatedKey]: {
+      [timerKey]: {
         username,
         start: startTime,
       },
     });
 
-    setKey(() => generatedKey);
+    setKey(() => timerKey);
     logger.info(
       "Successfully created new entry",
-      `[key=${generatedKey}]`,
+      `[key=${timerKey}]`,
       `[time=${startTime}]`
     );
     return startTime;
   }
 
   async function stop(stopTime: number): Promise<number> {
+    sessionStorage.removeItem("timerKey");
     logger.trace("Stopping timer for", key);
     if (key === null) {
       logger.error("Stop was invoked without any ongoing runs", `[key=${key}]`);
