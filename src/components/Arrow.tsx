@@ -1,4 +1,4 @@
-import { ReactComponent } from '../statics/svgs/Arrow.svg';
+import ArrowSvg from "../statics/svgs/Arrow.svg?react";
 
 interface Props {
   readonly color?: string;
@@ -8,11 +8,9 @@ interface Props {
 
 export function Arrow(props: Props) {
   const {
-    color = '#fff',
-    width = '80px',
-    style = { marginRight: '2rem' },
+    color = "#fff",
+    width = "80px",
+    style = { marginRight: "2rem" },
   } = props;
-  return (
-    <ReactComponent stroke={color} fill={color} width={width} style={style} />
-  );
+  return <ArrowSvg stroke={color} fill={color} width={width} style={style} />;
 }

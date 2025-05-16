@@ -1,6 +1,6 @@
 interface IConfig {
   features: {
-    logging: 'trace' | 'debug' | 'info' | 'warn' | 'error';
+    logging: "trace" | "debug" | "info" | "warn" | "error";
   };
   firebase: Partial<{
     apiKey: string;
@@ -16,16 +16,16 @@ interface IConfig {
 export class Config {
   static config: IConfig = {
     features: {
-      logging: 'trace',
+      logging: "trace",
     },
     firebase: {
-      apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-      appId: process.env.REACT_APP_FIREBASE_APP_ID,
-      authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-      databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-      messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-      projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-      storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+      appId: import.meta.env.VITE_FIREBASE_APP_ID,
+      authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+      databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+      messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+      projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+      storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
     },
   };
 

@@ -5,7 +5,7 @@ import { TimeDisplay } from "../../../components/TimeDisplay";
 import { toTimeString } from "../../../utils/toTimeString";
 import { useLeaderboard } from "../../../hooks/useLeaderboard";
 import { useMount } from "../../../hooks/useMount";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTimer } from "../../../hooks/useTimer";
 
 export function Ongoing() {
@@ -17,6 +17,10 @@ export function Ongoing() {
 
   const fastest = leaderboard[0];
   const username = location.state.username;
+  const renderCount = useRef(0);
+  renderCount.current += 1;
+
+  console.log(`Render count: ${renderCount.current}`);
 
   useMount(() => {
     startTimer(username, start);
